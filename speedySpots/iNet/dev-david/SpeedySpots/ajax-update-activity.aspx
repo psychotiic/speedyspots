@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ajax-update-activity.aspx.cs" Inherits="SpeedySpots.ajax_update_activity" %>

@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ajax-request-label.aspx.cs" Inherits="SpeedySpots.ajax_request_label" %>

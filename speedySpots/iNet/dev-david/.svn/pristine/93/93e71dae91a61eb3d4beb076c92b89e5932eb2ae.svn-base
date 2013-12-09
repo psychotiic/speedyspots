@@ -1,0 +1,1 @@
+This document contains steps and information necessary to configure the QB Sync app and the QB File for this application to work.

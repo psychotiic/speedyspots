@@ -1,0 +1,1305 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SpeedySpots" Class="DataAccessDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\mssql2008;Initial Catalog=SpeedySpots;Integrated Security=True" SettingsObjectName="SpeedySpots.DataAccess.Properties.Settings" SettingsPropertyName="SpeedySpotsConnectionString3" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.MPUser" Member="MPUsers">
+    <Type Name="MPUser">
+      <Column Name="MPUserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TempPassword" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TempPasswordExpiresOn" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsForcePasswordChange" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="HasTempPasswordBeenUsed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsLocked" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Salt" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="FailedLoginAttempts" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SessionId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MPRBAImageID" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="RBAPhrase" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="IPAddress" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="BrowserAgent" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastLoginOn" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastFailedLoginOn" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="PasswordChangedOn" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="MPUser_IATalentSchedule" Member="IATalentSchedules" ThisKey="MPUserID" OtherKey="MPUserID" Type="IATalentSchedule" />
+      <Association Name="MPUser_IATalentUnavailability" Member="IATalentUnavailabilities" ThisKey="MPUserID" OtherKey="MPUserID" Type="IATalentUnavailability" />
+      <Association Name="MPUser_IAProductionOrder" Member="IAProductionOrders" ThisKey="MPUserID" OtherKey="MPUserIDTalent" Type="IAProductionOrder" />
+      <Association Name="MPUser_IAUserTalentType" Member="IAUserTalentTypes" ThisKey="MPUserID" OtherKey="MPUserID" Type="IAUserTalentType" />
+      <Association Name="MPUser_IARequestEstimate" Member="IARequestEstimates" ThisKey="MPUserID" OtherKey="MPUserID" Type="IARequestEstimate" />
+      <Association Name="MPUser_IAUserSettingsGrid" Member="IAUserSettingsGrids" ThisKey="MPUserID" OtherKey="MPUserID" Type="IAUserSettingsGrid" />
+      <Association Name="MPUser_IAMusicUserRating" Member="IAMusicUserRatings" ThisKey="MPUserID" OtherKey="MPUserID" Type="IAMusicUserRating" />
+      <Association Name="MPUser_IAMessageRecipient" Member="IAMessageRecipients" ThisKey="MPUserID" OtherKey="MPUserID" Type="IAMessageRecipient" />
+      <Association Name="MPUser_IAMessage" Member="IAMessages" ThisKey="MPUserID" OtherKey="MPUserID" Type="IAMessage" />
+      <Association Name="MPUser_IARequest" Member="IARequests" ThisKey="MPUserID" OtherKey="MPUserID" Type="IARequest" />
+      <Association Name="MPUser_MPUserData" Member="MPUserDatas" ThisKey="MPUserID" OtherKey="MPUserID" Type="MPUserData" />
+      <Association Name="MPUser_IARequestNote" Member="IARequestNotes" ThisKey="MPUserID" OtherKey="MPUserID" Type="IARequestNote" />
+      <Association Name="MPUser_IAJob" Member="IAJobs" ThisKey="MPUserID" OtherKey="MPUserID" Type="IAJob" />
+      <Association Name="MPUser_IACustomerCoworker" Member="IACustomerCoworkers" ThisKey="MPUserID" OtherKey="MPUserID" Type="IACustomerCoworker" />
+      <Association Name="MPUser_IACustomerCreditCard" Member="IACustomerCreditCards" ThisKey="MPUserID" OtherKey="MPUserID" Type="IACustomerCreditCard" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MPOrgUser" Member="MPOrgUsers">
+    <Type Name="MPOrgUser">
+      <Column Name="MPOrgUserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MPOrgID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="MPUserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="MPOrg_MPOrgUser" Member="MPOrg" ThisKey="MPOrgID" OtherKey="MPOrgID" Type="MPOrg" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IARequestFile" Member="IARequestFiles">
+    <Type Name="IARequestFile">
+      <Column Name="IARequestFileID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IARequestID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Filename" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="FilenameUnique" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FileSize" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="IARequest_IARequestFile" Member="IARequest" ThisKey="IARequestID" OtherKey="IARequestID" Type="IARequest" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IASpotType" Member="IASpotTypes">
+    <Type Name="IASpotType">
+      <Column Name="IASpotTypeID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="IASpotType_IASpot" Member="IASpots" ThisKey="IASpotTypeID" OtherKey="IASpotTypeID" Type="IASpot" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IASpotFeeType" Member="IASpotFeeTypes">
+    <Type Name="IASpotFeeType">
+      <Column Name="IASpotFeeTypeID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="IASpotFeeType_IASpotFee" Member="IASpotFees" ThisKey="IASpotFeeTypeID" OtherKey="IASpotFeeTypeID" Type="IASpotFee" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IAJobStatus" Member="IAJobStatus">
+    <Type Name="IAJobStatus">
+      <Column Name="IAJobStatusID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="IAJobStatus_IAJob" Member="IAJobs" ThisKey="IAJobStatusID" OtherKey="IAJobStatusID" Type="IAJob" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IAProductionOrderStatus" Member="IAProductionOrderStatus">
+    <Type Name="IAProductionOrderStatus">
+      <Column Name="IAProductionOrderStatusID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="IAProductionOrderStatus_IAProductionOrder" Member="IAProductionOrders" ThisKey="IAProductionOrderStatusID" OtherKey="IAProductionOrderStatusID" Type="IAProductionOrder" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IASpotStatus" Member="IASpotStatus">
+    <Type Name="IASpotStatus">
+      <Column Name="IASpotStatusID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="IASpotStatus_IASpot" Member="IASpots" ThisKey="IASpotStatusID" OtherKey="IASpotStatusID" Type="IASpot" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IASpotFileType" Member="IASpotFileTypes">
+    <Type Name="IASpotFileType">
+      <Column Name="IASpotFileTypeID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="IASpotFileType_IASpotFile" Member="IASpotFiles" ThisKey="IASpotFileTypeID" OtherKey="IASpotFileTypeID" Type="IASpotFile" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IASpotFee" Member="IASpotFees">
+    <Type Name="IASpotFee">
+      <Column Name="IASpotFeeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IASpotID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IASpotFeeTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Fee" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="LengthActual" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="IASpotFeeType_IASpotFee" Member="IASpotFeeType" ThisKey="IASpotFeeTypeID" OtherKey="IASpotFeeTypeID" Type="IASpotFeeType" IsForeignKey="true" />
+      <Association Name="IASpot_IASpotFee" Member="IASpot" ThisKey="IASpotID" OtherKey="IASpotID" Type="IASpot" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IARequestProductionFile" Member="IARequestProductionFiles">
+    <Type Name="IARequestProductionFile">
+      <Column Name="IARequestProductionFileID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IARequestProductionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Filename" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="FilenameUnique" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FileSize" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="IARequestProduction_IARequestProductionFile" Member="IARequestProduction" ThisKey="IARequestProductionID" OtherKey="IARequestProductionID" Type="IARequestProduction" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IATalentSchedule" Member="IATalentSchedules">
+    <Type Name="IATalentSchedule">
+      <Column Name="IATalentScheduleID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MPUserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="MondayInDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="MondayOutDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TuesdayInDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TuesdayOutDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="WednesdayInDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="WednesdayOutDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ThursdayInDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ThursdayOutDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FridayInDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FridayOutDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="MPUser_IATalentSchedule" Member="MPUser" ThisKey="MPUserID" OtherKey="MPUserID" Type="MPUser" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IATalentUnavailability" Member="IATalentUnavailabilities">
+    <Type Name="IATalentUnavailability">
+      <Column Name="IATalentUnavailabilityID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MPUserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="MPUserIDProducer" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="FromDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ToDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Notes" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="MPUser_IATalentUnavailability" Member="MPUser" ThisKey="MPUserID" OtherKey="MPUserID" Type="MPUser" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IAProductionOrder" Member="IAProductionOrders">
+    <Type Name="IAProductionOrder">
+      <Column Name="IAProductionOrderID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IAJobID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IAProductionOrderStatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IATalentTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MPUserIDTalent" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="MPUserIDProducer" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="MPUserIDOnHold" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="HasBeenViewedByTalent" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CompletedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ProductionDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="OnHoldDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="IAProductionOrder_IASpot" Member="IASpots" ThisKey="IAProductionOrderID" OtherKey="IAProductionOrderID" Type="IASpot" />
+      <Association Name="IAProductionOrderStatus_IAProductionOrder" Member="IAProductionOrderStatus" ThisKey="IAProductionOrderStatusID" OtherKey="IAProductionOrderStatusID" Type="IAProductionOrderStatus" IsForeignKey="true" />
+      <Association Name="MPUser_IAProductionOrder" Member="MPUser" ThisKey="MPUserIDTalent" OtherKey="MPUserID" Type="MPUser" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="IAJob_IAProductionOrder" Member="IAJob" ThisKey="IAJobID" OtherKey="IAJobID" Type="IAJob" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IATalentType" Member="IATalentTypes">
+    <Type Name="IATalentType">
+      <Column Name="IATalentTypeID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Sort" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="IATalentType_IAUserTalentType" Member="IAUserTalentTypes" ThisKey="IATalentTypeID" OtherKey="IATalentTypeID" Type="IAUserTalentType" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IAUserTalentType" Member="IAUserTalentTypes">
+    <Type Name="IAUserTalentType">
+      <Column Name="IAUserTalentTypeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MPUserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="IATalentTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="IATalentType_IAUserTalentType" Member="IATalentType" ThisKey="IATalentTypeID" OtherKey="IATalentTypeID" Type="IATalentType" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="MPUser_IAUserTalentType" Member="MPUser" ThisKey="MPUserID" OtherKey="MPUserID" Type="MPUser" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IARequestProduction" Member="IARequestProductions">
+    <Type Name="IARequestProduction">
+      <Column Name="IARequestProductionID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IARequestID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IAJobID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MPUserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Notes" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="CreatedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="HasRecutBeenRequested" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="RecutRequestDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RecutNotes" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="IARequestProduction_IARequestProductionFile" Member="IARequestProductionFiles" ThisKey="IARequestProductionID" OtherKey="IARequestProductionID" Type="IARequestProductionFile" />
+      <Association Name="IARequest_IARequestProduction" Member="IARequest" ThisKey="IARequestID" OtherKey="IARequestID" Type="IARequest" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="IAJob_IARequestProduction" Member="IAJob" ThisKey="IAJobID" OtherKey="IAJobID" Type="IAJob" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IAOrder" Member="IAOrders">
+    <Type Name="IAOrder">
+      <Column Name="IAOrderID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MPUserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="CreditCardType" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="CreditCardNumber" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="CreditCardExpirationMonth" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="CreditCardExpirationYear" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="CreditCardFirstName" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="CreditCardLastName" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="CreditCardZip" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="AuthorizeNetTransactionID" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="AuthorizeNetResponse" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="AuthorizeNetProcessUsername" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AuthorizeNetProcessDatetime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="AuthorizeNetProcessResponse" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="AuthorizeNetProcessCaptureAmount" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="AuthorizeNetProcessCaptureAmountChangeReason" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="AuthorizeNetProcessStatus" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="IAOrder_IARequestEstimate" Member="IARequestEstimates" ThisKey="IAOrderID" OtherKey="IAOrderID" Type="IARequestEstimate" />
+      <Association Name="IAOrder_IAOrderLineItem" Member="IAOrderLineItems" ThisKey="IAOrderID" OtherKey="IAOrderID" Type="IAOrderLineItem" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IARequestEstimate" Member="IARequestEstimates">
+    <Type Name="IARequestEstimate">
+      <Column Name="IARequestEstimateID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IARequestID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IAOrderID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MPUserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="EmailRecipient" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="EmailCC" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="EmailSubject" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="EmailBody" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Charge" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="IsPaymentRequired" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsApproved" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ApprovedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="PreAuthorizedPaymentCharged" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="IAOrder_IARequestEstimate" Member="IAOrder" ThisKey="IAOrderID" OtherKey="IAOrderID" Type="IAOrder" IsForeignKey="true" />
+      <Association Name="MPUser_IARequestEstimate" Member="MPUser" ThisKey="MPUserID" OtherKey="MPUserID" Type="MPUser" IsForeignKey="true" />
+      <Association Name="IARequest_IARequestEstimate" Member="IARequest" ThisKey="IARequestID" OtherKey="IARequestID" Type="IARequest" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IAEmailTemplate" Member="IAEmailTemplates">
+    <Type Name="IAEmailTemplate">
+      <Column Name="IAEmailTemplateID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Body" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="CreatedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblCustomer" Member="tblCustomers">
+    <Type Name="tblCustomer">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PathUser" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PathMediaDL" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PathMediaUL" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Disabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Inactive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="RatesHide" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IDRateCard" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="PayFirst" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SSMA_TimeStamp" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Association Name="tblCustomer_tblCustomerDepartment" Member="tblCustomerDepartments" ThisKey="ID" OtherKey="IDCustomer" Type="tblCustomerDepartment" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblCustomerDepartment" Member="tblCustomerDepartments">
+    <Type Name="tblCustomerDepartment">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDCustomer" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Addressee" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Address1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Address2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PostalCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Country" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PhoneFax" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="QBAccount" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Billable" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Inactive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PeerView" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="PeerShare" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SSMA_TimeStamp" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Association Name="tblCustomerDepartment_tblSecUser" Member="tblSecUsers" ThisKey="ID" OtherKey="IDCustomerDepartment" Type="tblSecUser" />
+      <Association Name="tblCustomer_tblCustomerDepartment" Member="tblCustomer" ThisKey="IDCustomer" OtherKey="ID" Type="tblCustomer" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblSecUser" Member="tblSecUsers">
+    <Type Name="tblSecUser">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NameFirst" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NameLast" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IDUser" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Company" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IDCustomerDepartment" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Address1" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Address2" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
+      <Column Name="PostalCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PhoneFax" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PhoneMobile" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EmailNotifyList" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Pager" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="InstantMessenger" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Website" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="QuickbooksAccount" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PathUser" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PathMediaDL" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PathMediaUL" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Note" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Inactive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="RatesHide" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Validated" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SSMA_TimeStamp" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Column Name="IsUpgraded" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="MPUserID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="tblCustomerDepartment_tblSecUser" Member="tblCustomerDepartment" ThisKey="IDCustomerDepartment" OtherKey="ID" Type="tblCustomerDepartment" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IAUserSettingsGrid" Member="IAUserSettingsGrids">
+    <Type Name="IAUserSettingsGrid">
+      <Column Name="IAUserSettingsGridID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MPUserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SortExpression" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Filters" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="MPUser_IAUserSettingsGrid" Member="MPUser" ThisKey="MPUserID" OtherKey="MPUserID" Type="MPUser" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IAMusic" Member="IAMusics">
+    <Type Name="IAMusic">
+      <Column Name="IAMusicID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IAMusicGroupID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IAMusicTempoID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Path" Type="System.String" DbType="NVarChar(56) NOT NULL" CanBeNull="false" />
+      <Column Name="Filename" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="Extension" Type="System.String" DbType="NVarChar(16) NOT NULL" CanBeNull="false" />
+      <Column Name="LengthSecs" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="LengthBeds" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FileNameDisplay" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Association Name="IAMusic_IAMusicUserRating" Member="IAMusicUserRatings" ThisKey="IAMusicID" OtherKey="IAMusicID" Type="IAMusicUserRating" />
+      <Association Name="IAMusicTempo_IAMusic" Member="IAMusicTempo" ThisKey="IAMusicTempoID" OtherKey="IAMusicTempoID" Type="IAMusicTempo" IsForeignKey="true" />
+      <Association Name="IAMusicGroup_IAMusic" Member="IAMusicGroup" ThisKey="IAMusicGroupID" OtherKey="IAMusicGroupID" Type="IAMusicGroup" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IAMusicTempo" Member="IAMusicTempos">
+    <Type Name="IAMusicTempo">
+      <Column Name="IAMusicTempoID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Display" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="IAMusicTempo_IAMusic" Member="IAMusics" ThisKey="IAMusicTempoID" OtherKey="IAMusicTempoID" Type="IAMusic" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IAMusicGroup" Member="IAMusicGroups">
+    <Type Name="IAMusicGroup">
+      <Column Name="IAMusicGroupID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Association Name="IAMusicGroup_IAMusic" Member="IAMusics" ThisKey="IAMusicGroupID" OtherKey="IAMusicGroupID" Type="IAMusic" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IAMusicUserRating" Member="IAMusicUserRatings">
+    <Type Name="IAMusicUserRating">
+      <Column Name="IAMusicUserRatingID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IAMusicID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MPUserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Rating" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Association Name="IAMusic_IAMusicUserRating" Member="IAMusic" ThisKey="IAMusicID" OtherKey="IAMusicID" Type="IAMusic" IsForeignKey="true" />
+      <Association Name="MPUser_IAMusicUserRating" Member="MPUser" ThisKey="MPUserID" OtherKey="MPUserID" Type="MPUser" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.QBInvoice" Member="QBInvoices">
+    <Type Name="QBInvoice">
+      <Column Name="QBInvoiceID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IAJobID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="QBInvoiceRefID" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="QBCustomerRefID" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceNumber" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Filename" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DueDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ImportedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="IAJob_QBInvoice" Member="IAJob" ThisKey="IAJobID" OtherKey="IAJobID" Type="IAJob" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MPProperty" Member="MPProperties">
+    <Type Name="MPProperty">
+      <Column Name="MPPropertyID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="[Key]" Member="Key" Type="System.String" DbType="NVarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="License" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="TimespanBeforePasswordsExpire" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="TimespanBeforePasswordsExpireToNotifyUsers" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="TimespanBeforeTempPasswordsExpire" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="TimespanSinceLastLoginBeforeLockout" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="TimespanToKeepLogs" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="MaxPasswordHistoryCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MaxFailedLoginAttemptsBeforeLockout" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SmtpHost" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="SmtpPort" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SmtpUsername" Type="System.String" DbType="NVarChar(2000) NOT NULL" CanBeNull="false" />
+      <Column Name="SmtpPassword" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="RBASystemTrackCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DatabaseScriptsPath" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ApplicationID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="LastValidatedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IAMessageRecipient" Member="IAMessageRecipients">
+    <Type Name="IAMessageRecipient">
+      <Column Name="IAMessageRecipientID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IAMessageID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MPUserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="IsAcknowledged" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AcknowledgedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="MPUser_IAMessageRecipient" Member="MPUser" ThisKey="MPUserID" OtherKey="MPUserID" Type="MPUser" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="IAMessage_IAMessageRecipient" Member="IAMessage" ThisKey="IAMessageID" OtherKey="IAMessageID" Type="IAMessage" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IAMessage" Member="IAMessages">
+    <Type Name="IAMessage">
+      <Column Name="IAMessageID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MPUserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="DisplayStartDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DisplayEndDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Subject" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Body" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="CreatedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="IAMessage_IAMessageRecipient" Member="IAMessageRecipients" ThisKey="IAMessageID" OtherKey="IAMessageID" Type="IAMessageRecipient" />
+      <Association Name="MPUser_IAMessage" Member="MPUser" ThisKey="MPUserID" OtherKey="MPUserID" Type="MPUser" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IAFeedback" Member="IAFeedbacks">
+    <Type Name="IAFeedback">
+      <Column Name="IAFeedbackID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MPUserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Feeling" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Message" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Url" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Filename" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IARequestStatus" Member="IARequestStatus">
+    <Type Name="IARequestStatus">
+      <Column Name="IARequestStatusID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SortOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="IARequestStatus_IARequest" Member="IARequests" ThisKey="IARequestStatusID" OtherKey="IARequestStatusID" Type="IARequest" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IALabel" Member="IALabels">
+    <Type Name="IALabel">
+      <Column Name="IALabelID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Text" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IsCustomerVisible" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="IALabel_IARequestLabel" Member="IARequestLabels" ThisKey="IALabelID" OtherKey="IALabelID" Type="IARequestLabel" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IARequestLabel" Member="IARequestLabels">
+    <Type Name="IARequestLabel">
+      <Column Name="IARequestLabelID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IARequestID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IALabelID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="IALabel_IARequestLabel" Member="IALabel" ThisKey="IALabelID" OtherKey="IALabelID" Type="IALabel" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="IARequest_IARequestLabel" Member="IARequest" ThisKey="IARequestID" OtherKey="IARequestID" Type="IARequest" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IAPaymentLineItem" Member="IAPaymentLineItems">
+    <Type Name="IAPaymentLineItem">
+      <Column Name="IAPaymentLineItemID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IAPaymentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="QBInvoiceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Invoice" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="IsSynched" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="IAPayment_IAPaymentLineItem" Member="IAPayment" ThisKey="IAPaymentID" OtherKey="IAPaymentID" Type="IAPayment" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IAOrderLineItem" Member="IAOrderLineItems">
+    <Type Name="IAOrderLineItem">
+      <Column Name="IAOrderLineItemID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IAOrderID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="IsSynched" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="IAOrder_IAOrderLineItem" Member="IAOrder" ThisKey="IAOrderID" OtherKey="IAOrderID" Type="IAOrder" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IARequest" Member="IARequests">
+    <Type Name="IARequest">
+      <Column Name="IARequestID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IARequestStatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MPUserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="MPUserIDOwnedByStaff" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="MPUserIDLockedByStaff" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ContactPhone" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="ContactPhoneExtension" Type="System.String" DbType="NVarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="Script" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="ProductionNotes" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="NotificationEmails" Type="System.String" DbType="NVarChar(750) NOT NULL" CanBeNull="false" />
+      <Column Name="EstimateRequested" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IsRushOrder" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsLocked" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="HasBeenViewedByProducer" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="PageLoadDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IACustomerCreditCardID" Type="System.Int32" DbType="int NOT NULL" CanBeNull="false" />
+      <Association Name="IARequest_IARequestFile" Member="IARequestFiles" ThisKey="IARequestID" OtherKey="IARequestID" Type="IARequestFile" />
+      <Association Name="IARequest_IARequestProduction" Member="IARequestProductions" ThisKey="IARequestID" OtherKey="IARequestID" Type="IARequestProduction" />
+      <Association Name="IARequest_IARequestEstimate" Member="IARequestEstimates" ThisKey="IARequestID" OtherKey="IARequestID" Type="IARequestEstimate" />
+      <Association Name="IARequest_IARequestLabel" Member="IARequestLabels" ThisKey="IARequestID" OtherKey="IARequestID" Type="IARequestLabel" />
+      <Association Name="IARequest_IARequestNote" Member="IARequestNotes" ThisKey="IARequestID" OtherKey="IARequestID" Type="IARequestNote" />
+      <Association Name="IARequest_IAJob" Member="IAJobs" ThisKey="IARequestID" OtherKey="IARequestID" Type="IAJob" />
+      <Association Name="IARequestStatus_IARequest" Member="IARequestStatus" ThisKey="IARequestStatusID" OtherKey="IARequestStatusID" Type="IARequestStatus" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="MPUser_IARequest" Member="MPUser" ThisKey="MPUserID" OtherKey="MPUserID" Type="MPUser" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IASpotFile" Member="IASpotFiles">
+    <Type Name="IASpotFile">
+      <Column Name="IASpotFileID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IASpotID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IASpotFileTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Filename" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="FilenameUnique" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FileSize" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeletable" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="IASpotFileType_IASpotFile" Member="IASpotFileType" ThisKey="IASpotFileTypeID" OtherKey="IASpotFileTypeID" Type="IASpotFileType" IsForeignKey="true" />
+      <Association Name="IASpot_IASpotFile" Member="IASpot" ThisKey="IASpotID" OtherKey="IASpotID" Type="IASpot" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserOrgLink" Member="UserOrgLinks">
+    <Type Name="UserOrgLink">
+      <Column Name="UserOrgLinkId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MPOrgID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Skipped" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PastUserID" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LinkedBy" Type="System.String" DbType="NVarChar(75) NOT NULL" CanBeNull="false" />
+      <Column Name="LinkedOn" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IAPayment" Member="IAPayments">
+    <Type Name="IAPayment">
+      <Column Name="IAPaymentID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Total" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Company" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Instructions" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="CreditCardFirstName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CreditCardLastName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CreditCardType" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CreditCardNumber" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Zip" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="AuthorizeNetTransactionID" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="AuthorizeNetProcessResponse" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="CreatedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="IAPayment_IAPaymentLineItem" Member="IAPaymentLineItems" ThisKey="IAPaymentID" OtherKey="IAPaymentID" Type="IAPaymentLineItem" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IASpot" Member="IASpots">
+    <Type Name="IASpot">
+      <Column Name="IASpotID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IAProductionOrderID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IASpotStatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IASpotTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PurchaseOrderNumber" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DueDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Length" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="LengthActual" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ProductionNotes" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Script" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="IsAsap" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsReviewed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CompletedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="IASpot_IASpotFee" Member="IASpotFees" ThisKey="IASpotID" OtherKey="IASpotID" Type="IASpotFee" />
+      <Association Name="IASpot_IASpotFile" Member="IASpotFiles" ThisKey="IASpotID" OtherKey="IASpotID" Type="IASpotFile" />
+      <Association Name="IAProductionOrder_IASpot" Member="IAProductionOrder" ThisKey="IAProductionOrderID" OtherKey="IAProductionOrderID" Type="IAProductionOrder" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="IASpotStatus_IASpot" Member="IASpotStatus" ThisKey="IASpotStatusID" OtherKey="IASpotStatusID" Type="IASpotStatus" IsForeignKey="true" />
+      <Association Name="IASpotType_IASpot" Member="IASpotType" ThisKey="IASpotTypeID" OtherKey="IASpotTypeID" Type="IASpotType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IAUserActivity" Member="IAUserActivities">
+    <Type Name="IAUserActivity">
+      <Column Name="MPUserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ItemType" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ItemID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CreatedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IAProperty" Member="IAProperties">
+    <Type Name="IAProperty">
+      <Column Name="IAPropertyID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SiteName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SiteDomain" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="HostName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="EmailNewAccount" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="EmailAddressFrom" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="EmailAddressFromName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="EmailSystemNotifications" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="EmailBillings" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="EmailEstimatePayment" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="FeedbackEmailProblem" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="FeedbackEmailQuestion" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ClosedMessage" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="ClosedMessageDisplayAlways" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="MondayInDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="MondayOutDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TuesdayInDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TuesdayOutDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="WednesdayInDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="WednesdayOutDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ThursdayInDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ThursdayOutDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FridayInDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FridayOutDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="AuthorizeNetIsDebug" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AuthorizeNetLoginID" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="AuthorizeNetTransactionKey" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="QBLastInvoiceImportDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RecutRequestThreshold" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ActivityInterval" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EnableCreditCardShadowCopy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IAJobFile" Member="IAJobFiles">
+    <Type Name="IAJobFile">
+      <Column Name="IAJobFileID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IAJobID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Filename" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="FilenameUnique" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FileSize" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="IAJob_IAJobFile" Member="IAJob" ThisKey="IAJobID" OtherKey="IAJobID" Type="IAJob" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MPOrg" Member="MPOrgs">
+    <Type Name="MPOrg">
+      <Column Name="MPOrgID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MPOrgTypeID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="SMSID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IsIPLockdown" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="SynchedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="MPOrg_MPOrgUser" Member="MPOrgUsers" ThisKey="MPOrgID" OtherKey="MPOrgID" Type="MPOrgUser" />
+      <Association Name="MPOrg_MPOrgData" Member="MPOrgDatas" ThisKey="MPOrgID" OtherKey="MPOrgID" Type="MPOrgData" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MPUserData" Member="MPUserDatas">
+    <Type Name="MPUserData">
+      <Column Name="MPUserDataID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MPUserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="PhoneExtension" Type="System.String" DbType="NVarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="MobilePhone" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Comments" Type="System.String" DbType="NVarChar(2000) NOT NULL" CanBeNull="false" />
+      <Column Name="Department" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="IsCustomer" Type="System.String" DbType="NVarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="IsStaff" Type="System.String" DbType="NVarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="IsTalent" Type="System.String" DbType="NVarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="IsAdmin" Type="System.String" DbType="NVarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="DefaultTab" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="GridPageSize" Type="System.String" DbType="NVarChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="AdditionalEmails" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="IsArchived" Type="System.String" DbType="NVarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="CIMProfileId" Type="System.Int64" DbType="int NOT NULL" CanBeNull="false" />
+      <Association Name="MPUser_MPUserData" Member="MPUser" ThisKey="MPUserID" OtherKey="MPUserID" Type="MPUser" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IARequestNote" Member="IARequestNotes">
+    <Type Name="IARequestNote">
+      <Column Name="IARequestNoteID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IARequestID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MPUserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Note" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="CreatedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="IARequest_IARequestNote" Member="IARequest" ThisKey="IARequestID" OtherKey="IARequestID" Type="IARequest" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="MPUser_IARequestNote" Member="MPUser" ThisKey="MPUserID" OtherKey="MPUserID" Type="MPUser" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IAJob" Member="IAJobs">
+    <Type Name="IAJob">
+      <Column Name="IAJobID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IARequestID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IAJobStatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MPUserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="MPUserIDCompleted" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="MPUserIDProducer" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="MPUserIDCreated" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Sequence" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(75) NOT NULL" CanBeNull="false" />
+      <Column Name="Language" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Notes" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="QuantityMusic" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="QuantitySFX" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="QuantityProduction" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="QuantityConvert" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PriceMusic" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="PriceSFX" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="PriceProduction" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="PriceConvert" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="IsASAP" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsMusic" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsSFX" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsProduction" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsConvert" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsSentToProduction" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ProductionDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DueDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CompletedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="IAJob_IAProductionOrder" Member="IAProductionOrders" ThisKey="IAJobID" OtherKey="IAJobID" Type="IAProductionOrder" />
+      <Association Name="IAJob_IARequestProduction" Member="IARequestProductions" ThisKey="IAJobID" OtherKey="IAJobID" Type="IARequestProduction" />
+      <Association Name="IAJob_QBInvoice" Member="QBInvoices" ThisKey="IAJobID" OtherKey="IAJobID" Type="QBInvoice" />
+      <Association Name="IAJob_IAJobFile" Member="IAJobFiles" ThisKey="IAJobID" OtherKey="IAJobID" Type="IAJobFile" />
+      <Association Name="IAJobStatus_IAJob" Member="IAJobStatus" ThisKey="IAJobStatusID" OtherKey="IAJobStatusID" Type="IAJobStatus" IsForeignKey="true" />
+      <Association Name="IARequest_IAJob" Member="IARequest" ThisKey="IARequestID" OtherKey="IARequestID" Type="IARequest" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="MPUser_IAJob" Member="MPUser" ThisKey="MPUserID" OtherKey="MPUserID" Type="MPUser" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MPOrgData" Member="MPOrgDatas">
+    <Type Name="MPOrgData">
+      <Column Name="MPOrgDataID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MPOrgID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="IARateCardID" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Address1" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="Address2" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="State" Type="System.String" DbType="NVarChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="Country" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Zip" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Fax" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingAddress1" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingAddress2" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingCity" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingState" Type="System.String" DbType="NVarChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingCountry" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingZip" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingPhone" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="EmailInvoice" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="IsPayFirst" Type="System.String" DbType="NVarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="Notes" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="IsVerified" Type="System.String" DbType="NVarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="IsSynched" Type="System.String" DbType="NVarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="IsArchived" Type="System.String" DbType="NVarChar(1) NOT NULL" CanBeNull="false" />
+      <Association Name="MPOrg_MPOrgData" Member="MPOrg" ThisKey="MPOrgID" OtherKey="MPOrgID" Type="MPOrg" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IACustomerCoworker" Member="IACustomerCoworkers">
+    <Type Name="IACustomerCoworker">
+      <Column Name="IACustomerCoworkerID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MPUserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="MPUserIDCoworker" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="MPUser_IACustomerCoworker" Member="MPUser" ThisKey="MPUserID" OtherKey="MPUserID" Type="MPUser" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IACustomerCreditCard" Member="IACustomerCreditCards">
+    <Type Name="IACustomerCreditCard">
+      <Column Name="IACustomerCreditCardID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MPUserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CreditCardType" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CreditCardNumber" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CreditCardExpirationMonth" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CreditCardExpirationYear" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CreditCardFirstName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CreditCardLastName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CreditCardZip" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CreditCardAddress1" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CreditCardAddress2" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CreditCardCity" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CreditCardState" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CreditCardEmailReceipt" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="CIMPaymentProfileId" Type="System.Int64" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreditCardCompanyName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="MPUser_IACustomerCreditCard" Member="MPUser" ThisKey="MPUserID" OtherKey="MPUserID" Type="MPUser" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.fn_InetActive_GetOrganizations" Method="fn_InetActive_GetOrganizations" IsComposable="true">
+    <ElementType Name="fn_InetActive_GetOrganizationsResult">
+      <Column Name="MPOrgID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_InetActive_GetUsers" Method="fn_InetActive_GetUsers" IsComposable="true">
+    <ElementType Name="fn_InetActive_GetUsersResult">
+      <Column Name="MPUserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IsLocked" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_InetActive_GetPrivileges" Method="fn_InetActive_GetPrivileges" IsComposable="true">
+    <ElementType Name="fn_InetActive_GetPrivilegesResult">
+      <Column Name="ParentID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="MPPrivilegeID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_InetActive_GetRoles" Method="fn_InetActive_GetRoles" IsComposable="true">
+    <Parameter Name="MPOrgID" Parameter="mPOrgID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="fn_InetActive_GetRolesResult">
+      <Column Name="MPRoleID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PrivilegeCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_Producer_GetJobs" Method="fn_Producer_GetJobs" IsComposable="true">
+    <Parameter Name="IARequestID" Parameter="iARequestID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="fn_Producer_GetJobsResult">
+      <Column Name="IAJobID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IARequestID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Sequence" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DueDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_Producer_GetSpotTypes" Method="fn_Producer_GetSpotTypes" IsComposable="true">
+    <ElementType Name="fn_Producer_GetSpotTypesResult">
+      <Column Name="IASpotTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_Producer_GetSpots" Method="fn_Producer_GetSpots" IsComposable="true">
+    <Parameter Name="IAProductionOrderID" Parameter="iAProductionOrderID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="fn_Producer_GetSpotsResult">
+      <Column Name="IASpotID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DueDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_Producer_GetSpotFees" Method="fn_Producer_GetSpotFees" IsComposable="true">
+    <Parameter Name="IASpotID" Parameter="iASpotID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="fn_Producer_GetSpotFeesResult">
+      <Column Name="IASPotFeeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Fee" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_Producer_GetSpotFeeTypes" Method="fn_Producer_GetSpotFeeTypes" IsComposable="true">
+    <ElementType Name="fn_Producer_GetSpotFeeTypesResult">
+      <Column Name="IASpotFeeTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_Producer_GetProductionOrders" Method="fn_Producer_GetProductionOrders" IsComposable="true">
+    <Parameter Name="IAJobID" Parameter="iAJobID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="fn_Producer_GetProductionOrdersResult">
+      <Column Name="IAJobID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IAProductionOrderID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Talent" Type="System.String" DbType="NVarChar(51) NOT NULL" CanBeNull="false" />
+      <Column Name="spots" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_QualityControl_GetJobDetails_ProductionOrders" Method="fn_QualityControl_GetJobDetails_ProductionOrders" IsComposable="true">
+    <Parameter Name="IAJobID" Parameter="iAJobID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="fn_QualityControl_GetJobDetails_ProductionOrdersResult">
+      <Column Name="IAProductionOrderID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TalentName" Type="System.String" DbType="NVarChar(51) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_Producer_GetSpotFiles" Method="fn_Producer_GetSpotFiles" IsComposable="true">
+    <Parameter Name="IASpotID" Parameter="iASpotID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IASpotFileTypeID" Parameter="iASpotFileTypeID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="fn_Producer_GetSpotFilesResult">
+      <Column Name="IASpotFileID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Filename" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_QualityControl_GetJobTalentFiles" Method="fn_QualityControl_GetJobTalentFiles" IsComposable="true">
+    <Parameter Name="IAJobID" Parameter="iAJobID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="fn_QualityControl_GetJobTalentFilesResult">
+      <Column Name="IASpotFileID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Filename" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_Talent_GetUnavailability" Method="fn_Talent_GetUnavailability" IsComposable="true">
+    <Parameter Name="MPUserID" Parameter="mPUserID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="fn_Talent_GetUnavailabilityResult">
+      <Column Name="IATalentUnavailabilityID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FromDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ToDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_Producer_GetUnavailabilityReport" Method="fn_Producer_GetUnavailabilityReport" IsComposable="true">
+    <Parameter Name="StartOfToday" Parameter="startOfToday" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="EndOfToday" Parameter="endOfToday" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="fn_Producer_GetUnavailabilityReportResult">
+      <Column Name="IATalentUnavailabilityID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MPUserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Talent" Type="System.String" DbType="NVarChar(51) NOT NULL" CanBeNull="false" />
+      <Column Name="FromDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ToDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Notes" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="CreatedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_Admin_GetEmailEstimates" Method="fn_Admin_GetEmailEstimates" IsComposable="true">
+    <ElementType Name="fn_Admin_GetEmailEstimatesResult">
+      <Column Name="IAEmailTemplateID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Body" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="CreatedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_Customer_GetUserAccountCompanies" Method="fn_Customer_GetUserAccountCompanies" IsComposable="true">
+    <ElementType Name="fn_Customer_GetUserAccountCompaniesResult">
+      <Column Name="MPOrgID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(77) NOT NULL" CanBeNull="false" />
+      <Column Name="IsVerified" Type="System.String" DbType="NVarChar(1) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_Admin_GetPossibleDuplicateOrganizations" Method="fn_Admin_GetPossibleDuplicateOrganizations" IsComposable="true">
+    <Parameter Name="MPOrgID" Parameter="mPOrgID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="fn_Admin_GetPossibleDuplicateOrganizationsResult">
+      <Column Name="MPOrgID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_System_PurgeCompanies" Method="sp_System_PurgeCompanies">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.fn_Message_GetAdminInbox" Method="fn_Message_GetAdminInbox" IsComposable="true">
+    <ElementType Name="fn_Message_GetAdminInboxResult">
+      <Column Name="IAMessageID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Subject" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Sender" Type="System.String" DbType="NVarChar(51) NOT NULL" CanBeNull="false" />
+      <Column Name="DisplayStartDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DisplayEndDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_Message_GetUserInbox" Method="fn_Message_GetUserInbox" IsComposable="true">
+    <Parameter Name="MPUserID" Parameter="mPUserID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="fn_Message_GetUserInboxResult">
+      <Column Name="IAMessageID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Subject" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Sender" Type="System.String" DbType="NVarChar(51) NOT NULL" CanBeNull="false" />
+      <Column Name="DisplayStartDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DisplayEndDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_Message_GetNew" Method="fn_Message_GetNew" IsComposable="true">
+    <Parameter Name="MPUserID" Parameter="mPUserID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="fn_Message_GetNewResult">
+      <Column Name="IAMessageID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Subject" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="DisplayStartDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DisplayEndDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_Message_GetRecipients" Method="fn_Message_GetRecipients" IsComposable="true">
+    <Parameter Name="IAMessageID" Parameter="iAMessageID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="fn_Message_GetRecipientsResult">
+      <Column Name="IAMessageID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Recipient" Type="System.String" DbType="NVarChar(51) NOT NULL" CanBeNull="false" />
+      <Column Name="IsAcknowledged" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AcknowledgedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_Admin_GetAllUsers" Method="fn_Admin_GetAllUsers" IsComposable="true">
+    <ElementType Name="fn_Admin_GetAllUsersResult">
+      <Column Name="MPUserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(51) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_Site_GetRequestStatuses" Method="fn_Site_GetRequestStatuses" IsComposable="true">
+    <ElementType Name="fn_Site_GetRequestStatusesResult">
+      <Column Name="IARequestStatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SortOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_Producer_GetRequestLabels" Method="fn_Producer_GetRequestLabels" IsComposable="true">
+    <Parameter Name="IARequestID" Parameter="iARequestID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="fn_Producer_GetRequestLabelsResult">
+      <Column Name="IALabelID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Text" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_Customer_GetRequestLabels" Method="fn_Customer_GetRequestLabels" IsComposable="true">
+    <Parameter Name="IARequestID" Parameter="iARequestID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="fn_Customer_GetRequestLabelsResult">
+      <Column Name="IALabelID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Text" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_Producer_GetLabelFilter" Method="fn_Producer_GetLabelFilter" IsComposable="true">
+    <ElementType Name="fn_Producer_GetLabelFilterResult">
+      <Column Name="SortID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IALabelID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Text" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_Producer_GetTalentTypes" Method="fn_Producer_GetTalentTypes" IsComposable="true">
+    <ElementType Name="fn_Producer_GetTalentTypesResult">
+      <Column Name="IATalentTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Sort" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_Admin_GetUsers" Method="fn_Admin_GetUsers" IsComposable="true">
+    <Parameter Name="MPOrgID" Parameter="mPOrgID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="fn_Admin_GetUsersResult">
+      <Column Name="MPUserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="IsArchived" Type="System.String" DbType="NVarChar(1) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_Admin_GetDashboard" Method="fn_Admin_GetDashboard" IsComposable="true">
+    <ElementType Name="fn_Admin_GetDashboardResult">
+      <Column Name="MPUserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(52) NOT NULL" CanBeNull="false" />
+      <Column Name="IsCustomer" Type="System.String" DbType="NVarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="IsStaff" Type="System.String" DbType="NVarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="IsTalent" Type="System.String" DbType="NVarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="IsAdmin" Type="System.String" DbType="NVarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="IsArchived" Type="System.String" DbType="NVarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="LastLoginOn" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_Producer_GetAllTalent" Method="fn_Producer_GetAllTalent" IsComposable="true">
+    <ElementType Name="fn_Producer_GetAllTalentResult">
+      <Column Name="MPUserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(51) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_Producer_GetTalent" Method="fn_Producer_GetTalent" IsComposable="true">
+    <Parameter Name="IATalentTypeID" Parameter="iATalentTypeID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="fn_Producer_GetTalentResult">
+      <Column Name="MPUserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(51) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_Producer_GetCustomerLookup" Method="fn_Producer_GetCustomerLookup" IsComposable="true">
+    <ElementType Name="fn_Producer_GetCustomerLookupResult">
+      <Column Name="MPUserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_Producer_GetAllTalentUnavailability" Method="fn_Producer_GetAllTalentUnavailability" IsComposable="true">
+    <ElementType Name="fn_Producer_GetAllTalentUnavailabilityResult">
+      <Column Name="IATalentUnavailabilityID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MPUserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Talent" Type="System.String" DbType="NVarChar(51) NOT NULL" CanBeNull="false" />
+      <Column Name="FromDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ToDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Notes" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="CreatedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_System_DeleteUserActivityOlderThan" Method="sp_System_DeleteUserActivityOlderThan">
+    <Parameter Name="DateTime" Parameter="dateTime" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="ItemType" Parameter="itemType" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.fn_Admin_GetUserCount" Method="fn_Admin_GetUserCount" IsComposable="true">
+    <Parameter Name="MPOrgID" Parameter="mPOrgID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.fn_Customer_GetDashboard" Method="fn_Customer_GetDashboard" IsComposable="true">
+    <Parameter Name="MPUserID" Parameter="mPUserID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="fn_Customer_GetDashboardResult">
+      <Column Name="IAJobID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IARequestID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_Producer_GetJobFiles" Method="fn_Producer_GetJobFiles" IsComposable="true">
+    <Parameter Name="IAJobID" Parameter="iAJobID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="fn_Producer_GetJobFilesResult">
+      <Column Name="IAJobFileID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Filename" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_Customer_GetRequests" Method="fn_Customer_GetRequests" IsComposable="true">
+    <Parameter Name="MPUserID" Parameter="mPUserID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="fn_Customer_GetRequestsResult">
+      <Column Name="IAJobID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IARequestID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(75) NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="NotificationEmails" Type="System.String" DbType="NVarChar(750) NOT NULL" CanBeNull="false" />
+      <Column Name="MPUserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_QualityControl_GetDashboardJobs" Method="fn_QualityControl_GetDashboardJobs" IsComposable="true">
+    <Parameter Name="MPUserIDTalent" Parameter="mPUserIDTalent" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="fn_QualityControl_GetDashboardJobsResult">
+      <Column Name="IAJobID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IARequestID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Sequence" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DisplayJobID" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="JobName" Type="System.String" DbType="NVarChar(75) NOT NULL" CanBeNull="false" />
+      <Column Name="IsAsap" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Language" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IsConvert" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsMusic" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsProduction" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsSFX" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IAJobStatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SpotsNotOnHold" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DueDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="JobStatus" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TalentFileCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsPastDue" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AsapSpotCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_Producer_GetCompletedDashboard" Method="fn_Producer_GetCompletedDashboard" IsComposable="true">
+    <ElementType Name="fn_Producer_GetCompletedDashboardResult">
+      <Column Name="IARequestID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IAJobID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IAJobStatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="JobName" Type="System.String" DbType="NVarChar(75) NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(51) NOT NULL" CanBeNull="false" />
+      <Column Name="CompletedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ProductionDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsSentToProduction" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsRushOrder" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IARequestStatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Language" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_Customer_GetInvoices" Method="fn_Customer_GetInvoices" IsComposable="true">
+    <Parameter Name="IARequestID" Parameter="iARequestID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="fn_Customer_GetInvoicesResult">
+      <Column Name="QBInvoiceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceNumber" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Sequence" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DueDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Filename" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Paid" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_QualityControl_GetDashboardSpots" Method="fn_QualityControl_GetDashboardSpots" IsComposable="true">
+    <Parameter Name="IAJobID" Parameter="iAJobID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="fn_QualityControl_GetDashboardSpotsResult">
+      <Column Name="IARequestID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IAJobID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IAProductionOrderID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IASpotID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsAsap" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IASpotStatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Talent" Type="System.String" DbType="NVarChar(51)" CanBeNull="true" />
+      <Column Name="DueDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="SpotStatus" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_Talent_GetProductionOrders" Method="fn_Talent_GetProductionOrders" IsComposable="true">
+    <Parameter Name="MPUserID" Parameter="mPUserID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="fn_Talent_GetProductionOrdersResult">
+      <Column Name="IAProductionOrderID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IAProductionOrderStatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(75) NOT NULL" CanBeNull="false" />
+      <Column Name="JobNumber" Type="System.String" DbType="VarChar(16)" CanBeNull="true" />
+      <Column Name="TalentMarkedCompleteDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="QCJobMarkedCompletDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="QCFileSentDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_Producer_GetDashboard" Method="fn_Producer_GetDashboard" IsComposable="true">
+    <Parameter Name="Labels" Parameter="labels" Type="System.String" DbType="NVarChar(1000)" />
+    <ElementType Name="fn_Producer_GetDashboardResult">
+      <Column Name="IARequestID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(51) NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsRushOrder" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IsPastDue" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IARequestStatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LabelCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="JobCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EnglishCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SpanishCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RecutCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MPUserIDOwnedByStaff" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="AppliedLabelIDs" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ss_Requests_Dashboard" Method="ss_Requests_Dashboard">
+    <Parameter Name="requestNumber" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="requestDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="requestedBy" Type="System.String" DbType="NVarChar(256)" />
+    <Parameter Name="language" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="requestStatus" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="requestASAP" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="labels" Type="System.String" DbType="NVarChar(26)" />
+    <Parameter Name="labelsShowOnlyUnlabeled" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="orderBy" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="PageSize" Parameter="pageSize" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PageNumber" Parameter="pageNumber" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ss_Requests_DashboardResult">
+      <Column Name="IARequestID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(51) NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsRushOrder" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IsPastDue" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IARequestStatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LabelCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="JobCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EnglishCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SpanishCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RecutCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MPUserIDOwnedByStaff" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="AppliedLabelIDs" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Column Name="RowNumber" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="RecordCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_Talent_GetDashboard" Method="fn_Talent_GetDashboard" IsComposable="true">
+    <Parameter Name="MPUserID" Parameter="mPUserID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="fn_Talent_GetDashboardResult">
+      <Column Name="IAJobID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IAProductionOrderID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IAProductionOrderStatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsAsap" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="HasBeenViewedByTalent" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="JobName" Type="System.String" DbType="NVarChar(75) NOT NULL" CanBeNull="false" />
+      <Column Name="JobNumber" Type="System.String" DbType="VarChar(16)" CanBeNull="true" />
+      <Column Name="SpotsNotOnHold" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SpotCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DueDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_Admin_GetOrganizations" Method="fn_Admin_GetOrganizations" IsComposable="true">
+    <ElementType Name="fn_Admin_GetOrganizationsResult">
+      <Column Name="MPOrgID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UserCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="State" Type="System.String" DbType="NVarChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="Zip" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="IsVerified" Type="System.String" DbType="NVarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="IsArchived" Type="System.String" DbType="NVarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="IsPayFirst" Type="System.String" DbType="NVarChar(1) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+</Database>

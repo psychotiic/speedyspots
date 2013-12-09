@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Body>
+    <ReportItems>
+      <Tablix Name="Tablix1">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>0.03125in</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.25in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox15">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Code.AppendToDetails(Fields!JobTitle.Value, Fields!IARequestID.Value &amp; "-" &amp; Fields!JobNumber.Value, Fields!RequesterFirstName.Value &amp; " " &amp; Fields!RequesterLastName.Value, Fields!PurchaseOrderNumber.Value, Fields!SpotTitle.Value, Fields!LengthActual.Value, Fields!TalentFirstName.Value &amp; " " &amp; Fields!TalentLastName.Value, Fields!SpotFeeTypeName.Value)</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox15</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember />
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <Group Name="Details" />
+            </TablixMember>
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <DataSetName>GetJobs</DataSetName>
+        <Height>0.25in</Height>
+        <Width>0.03125in</Width>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Tablix>
+      <Textbox Name="Textbox14">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Code.GetJobsString()</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox14</rd:DefaultName>
+        <Left>0.125in</Left>
+        <Height>0.25in</Height>
+        <Width>6.125in</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+    </ReportItems>
+    <Height>0.25in</Height>
+    <Style />
+  </Body>
+  <Width>6.25in</Width>
+  <Page>
+    <LeftMargin>1in</LeftMargin>
+    <RightMargin>1in</RightMargin>
+    <TopMargin>1in</TopMargin>
+    <BottomMargin>1in</BottomMargin>
+    <Style />
+  </Page>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource1">
+      <DataSourceReference>SpeedySpots</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>e102aab5-a5e4-48a6-ae24-2978c3b1c351</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="GetJobs">
+      <Query>
+        <DataSourceName>DataSource1</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@IAJobID">
+            <Value>=Parameters!IAJobID.Value</Value>
+            <rd:UserDefined>true</rd:UserDefined>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>sp_Reporting_GetJobSpotsForQB</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="JobTitle">
+          <DataField>JobTitle</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="IARequestID">
+          <DataField>IARequestID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SpotTitle">
+          <DataField>SpotTitle</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CompanyName">
+          <DataField>CompanyName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RequesterFirstName">
+          <DataField>RequesterFirstName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="JobNumber">
+          <DataField>JobNumber</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="RequesterLastName">
+          <DataField>RequesterLastName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="IAProductionOrderID">
+          <DataField>IAProductionOrderID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="TalentFirstName">
+          <DataField>TalentFirstName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TalentLastName">
+          <DataField>TalentLastName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LengthActual">
+          <DataField>LengthActual</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrderNumber">
+          <DataField>PurchaseOrderNumber</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SpotFeeTypeName">
+          <DataField>SpotFeeTypeName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportParameters>
+    <ReportParameter Name="IAJobID">
+      <DataType>Integer</DataType>
+      <Prompt>IAJob ID</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <Code>Dim JobsString As String
+    Dim Job As String
+    Dim JID As String
+    Dim Requestor As String
+
+    Public Function AppendToDetails(ByVal jobName As String, ByVal jobId As String, ByVal requestedBy As String, ByVal po As String, ByVal title As String, ByVal actualTime As String, ByVal talentName As String, ByVal feeType As String)
+        Dim appendString As String
+
+        appendString = ""
+
+		If String.IsNullOrEmpty(JID) OR jobId &lt;&gt; JID Then
+            JobsString = ""
+			JID = ""
+			Job = ""
+			Requestor = ""
+			
+			appendString = appendString &amp; "JID: " &amp; jobId
+            JID = jobId
+        End If
+		
+		If String.IsNullOrEmpty(Job) Then
+            appendString = appendString &amp; " / Job: " &amp; jobName
+            Job = jobName
+        End If
+		
+        If String.IsNullOrEmpty(Requestor) Then
+            appendString = appendString &amp; " / by " &amp; requestedBy &amp; vbCrLf
+            Requestor = requestedBy
+        End If
+
+        appendString = appendString &amp; "   "
+
+        '{PO Number} {Spot Title} {Spot Time} {Talent Name} {Spot Fee Type}
+        If Not String.IsNullOrEmpty(po) Then
+            appendString = appendString &amp; po &amp; " "
+        End If
+
+        appendString = appendString &amp; title &amp; " "
+
+        If Not String.IsNullOrEmpty(actualTime) Then
+            appendString = appendString &amp; "[" &amp; actualTime &amp; "] "
+        End If
+
+        appendString = appendString &amp; talentName &amp; " "
+        appendString = appendString &amp; feeType
+
+        JobsString = JobsString &amp; appendString &amp; vbCrLf
+
+        Return ""
+    End Function
+
+    Public Function GetJobsString()
+        Return JobsString.Trim()
+    End Function</Code>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>ff76a82c-bd0c-4669-b652-711b5fc9f6ad</rd:ReportID>
+</Report>

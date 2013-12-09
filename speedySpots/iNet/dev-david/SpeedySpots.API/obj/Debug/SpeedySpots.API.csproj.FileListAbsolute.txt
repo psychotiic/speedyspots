@@ -1,0 +1,6 @@
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots.API\bin\Debug\SpeedySpots.API.dll
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots.API\bin\Debug\SpeedySpots.API.pdb
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots.API\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots.API\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots.API\obj\Debug\SpeedySpots.API.dll
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots.API\obj\Debug\SpeedySpots.API.pdb

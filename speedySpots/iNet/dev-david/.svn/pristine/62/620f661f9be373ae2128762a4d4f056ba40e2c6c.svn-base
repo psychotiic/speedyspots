@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ajax-validate-payment.aspx.cs" Inherits="SpeedySpots.ajax_validate_payment" %>

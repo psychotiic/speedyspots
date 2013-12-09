@@ -1,0 +1,72 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="InetActive.master.cs" Inherits="SpeedySpots.InetActive.InetActive" %>
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>InetActive&trade; Admin by InetSolution</title>
+    <link rel="stylesheet" type="text/css" href="~/css/reset.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="~/InetActive/css/grid.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="~/InetActive/css/inetactive.css" media="screen" />
+    <asp:ContentPlaceHolder ID="m_oHead" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body id="m_oBodyTag" runat="server">
+    <form id="m_oForm" runat="server">
+        <div class="container_16">
+        <!-- header -->
+        <div id="header">
+            <div class="grid_8" id="project_title"><h1><a id="A1" href="~/inetactive/Default.aspx" runat="server">InetActive</a></h1></div>
+            <div class="grid_8" id="account">
+                <div id="m_pModifyUser" runat="server">
+                    <asp:Label ID="m_lblLastLogin" runat="server"></asp:Label><asp:LinkButton ID="m_btnModifyUser" runat="server" CausesValidation="false" CssClass="user" onclick="OnModifyUser"></asp:LinkButton> | <a href="Logout.aspx" class="logout">Logout</a>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!-- main nav -->
+        <div id="content">
+            <div class="grid_16" id="project_navigation">
+                <ul id="m_ulInetActive" runat="server">
+                    <li id="n-home"><a href="Default.aspx"><span class="home">Home</span></a></li>
+                    <li id="n-orgs"><a href="OrganizationList.aspx"><span class="orgs">Organizations</span></a></li>
+                    <li id="n-roles"><a href="RoleList.aspx"><span class="roles">Roles</span></a></li>
+                    <li id="n-users"><a href="UserList.aspx"><span class="users">Users</span></a></li>
+                    <li id="n-settingsmemberprotect"><a href="MemberProtectParams.aspx"><span class="settings">MemberProtect Settings</span></a></li>
+                    <li id="n-settings"><a href="SiteParams.aspx"><span class="settings">Settings</span></a></li>
+                </ul>
+            </div>
+            <div class="clear"></div>
+            <!-- sub nav, start of left area -->
+            <div class="grid_16">
+                <div id="action_nav">
+                    <ul id="m_ulSubMenu" runat="server">
+				    </ul>
+                </div>
+                <!-- main area -->
+                <div id="main">
+                    <div id="main_padding">
+                        <telerik:RadScriptManager ID="m_oScriptManager" runat="server"></telerik:RadScriptManager>
+                        <asp:ValidationSummary ID="ValidationSummary1" runat="server" HeaderText="Please fix the following issues to continue:" />
+                        <div class="message" id="m_divMessage" runat="server"></div>
+                        <br />
+                        <asp:ContentPlaceHolder ID="m_oContent" runat="server"></asp:ContentPlaceHolder>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!-- footer -->
+        <div class="grid_16" id="footer">
+		<div id="footer_box">
+			<div class="copyright">
+           		<p>&copy; <%=CopyrightYears %> <a href="http://www.inetsolution.com">InetSolution</a>. All rights reserved.</p>
+			</div>
+		</div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    </form>
+</body>
+</html>

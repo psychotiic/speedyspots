@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project DefaultTargets="BuildAndPublish"
+         ToolsVersion="4.0"
+         xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets"/>
+   <Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets"/>
+
+   <PropertyGroup>
+      <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+      <ProjectName>SpeedySpots</ProjectName>
+      <ProjectFile>$(ProjectName)\$(ProjectName).csproj</ProjectFile>
+      <Version>$(BUILD_NUMBER)</Version>
+   </PropertyGroup>
+
+   <Target Name="BuildAndPublish">
+      <AssemblyInfo CodeLanguage="CS"
+         OutputFile="$(MSBuildProjectDirectory)\SpeedySpots\Properties\AssemblyInfo.cs"
+         AssemblyTitle="SpeedySpots.SSMS"
+         AssemblyDescription="SpeedySpots SSMS"
+         AssemblyConfiguration=""
+         AssemblyCompany="SpeedySpots"
+         AssemblyProduct="SSMS"
+         AssemblyCopyright="Copyright (c) SpeedySpots, 2013"
+         AssemblyTrademark=""
+         ComVisible="false"
+         CLSCompliant="true"
+         AssemblyVersion="$(Version)"
+         AssemblyFileVersion="$(Version)" />
+      <RemoveDir Directories="Publish" />
+      <Message Text="$(Configuration)"></Message>
+      <MSBuild Projects="$(ProjectFile)"
+               Targets="Build;PipelinePreDeployCopyAllFilesToOneFolder"
+               Properties="Configuration=$(Configuration);_PackageTempDir=..\Publish\$(Configuration);AutoParameterizationWebConfigConnectionStrings=false;" />
+   </Target>
+
+   <!-- Just can't figure if this does anything really useful -->
+   <!--<Target Name="PrecompileWeb">
+      <AspNetCompiler
+            VirtualPath="/SMS"
+            PhysicalPath="Publish\$(Configuration)\"
+            Clean="true"
+            Updateable="true"
+            TargetPath="Publish_Compiled"
+      />
+   </Target>-->
+   
+   <Target Name="Deploy" DependsOnTargets="BuildAndPublish">
+      <Message Text="Deploy to $(DEPLOY_DIRECTORY)" />
+      <ItemGroup>
+         <DeployFiles Include="Publish\$(Configuration)\**\*.*" Exclude="**\Web.config" />
+      </ItemGroup>
+      <Copy SourceFiles="@(DeployFiles)"
+            DestinationFolder="$(DEPLOY_DIRECTORY)\%(RecursiveDir)" />
+   </Target>
+
+   <Target Name="ZipProduction" DependsOnTargets="BuildAndPublish">
+      <ItemGroup>
+         <ZipFileIncludes Include="Publish\$(Configuration)\**\*.*" Exclude="**\Web.config" />
+         <ZipFileIncludes Include="Change Scripts\**\*.*" />
+      </ItemGroup>
+      <Zip Files="@(ZipFileIncludes)" ZipFileName="SSMS-Production-Web-v$(Version).zip" />
+      <RemoveDir Directories="Publish" />
+   </Target>
+
+   <Target Name="ZipStaging" DependsOnTargets="BuildAndPublish">
+      <ItemGroup>
+         <ZipFileIncludes Include="Publish\$(Configuration)\**\*.*" Exclude="**\Web.config" />
+         <ZipFileIncludes Include="Change Scripts\**\*.*" />
+      </ItemGroup>
+      <Zip Files="@(ZipFileIncludes)" ZipFileName="SSMS-Staging-Web-v$(Version).zip" />
+      <RemoveDir Directories="Publish" />
+   </Target>
+
+</Project>

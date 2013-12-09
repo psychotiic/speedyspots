@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<repositories>
+  <repository path="..\SpeedySpots Quickbook Connector\packages.config" />
+  <repository path="..\SpeedySpots.Business\packages.config" />
+  <repository path="..\SpeedySpots.Tests\packages.config" />
+  <repository path="..\SpeedySpots\packages.config" />
+</repositories>

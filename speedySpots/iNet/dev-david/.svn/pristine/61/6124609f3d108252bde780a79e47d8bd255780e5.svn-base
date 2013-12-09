@@ -1,0 +1,11 @@
+* html .group {
+	height: 1%;
+}
+
+* html .available, .controls, .assigned {
+	width: 24%;
+}
+
+* html fieldset input {
+	vertical-align:middle;
+}

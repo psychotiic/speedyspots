@@ -1,0 +1,146 @@
+﻿body 
+{
+	font-size: 100%;
+	font-family: "Trebuchet MS", Arial, Verdana, Helvetica, sans-serif;
+}
+
+h2 
+{
+	margin-top: .5em;
+	font-size: 1.5em; /* 24 */
+	margin-bottom: .25em;
+	text-align: center;
+}
+
+h3
+{
+	font-size: 1.125em; /* 18 */
+	margin-bottom: 1em;
+}
+
+legend 
+{
+	font-size: 1em;
+	font-weight: bold;
+	margin-bottom: 0;
+}
+
+.form-holder fieldset .group 
+{
+	font-size: .875em;
+	line-height: 1.285714em;
+}
+
+.form-holder fieldset .inputgroup 
+{
+    float: left;
+    width: 75%;
+}
+
+.form-holder fieldset label {
+	float: left;
+	text-align: right;
+	width: 24%;
+	margin-right: 1%;
+	color: #535353;
+}
+
+.form-holder fieldset .output 
+{
+	font-weight: bold;
+}
+
+.form-holder fieldset 
+{
+	margin: 0;
+	padding: 0;
+	width: 85%;
+}
+
+.form-holder fieldset.half 
+{
+    float: left;
+    width: 50%;
+}
+
+.prodhalf 
+{
+    float: right;
+    width: 50%;
+}
+
+.script 
+{
+	margin: 1em auto;
+	padding: 1em;
+	width: 85%;
+	border: 1px solid #000;
+}
+
+#prodnotes 
+{
+    margin: 0 auto 1em;
+    padding: 1em;
+    width: 85%;
+}
+
+.details 
+{
+    margin-bottom: 1em;
+}
+
+#header h1#logo {
+	display: none;
+}
+
+#header 
+{
+	padding-bottom: .5em;
+	border-bottom: 1px solid #000;
+	text-align: center;
+}
+
+.button-row, .noprint, .breadcrumb, .hr
+{
+	display: none;
+}
+
+/* page breaks */
+
+.pagebreak hr 
+{
+	display: none;
+}
+
+.page-break, .pagebreak 
+{
+	display: block;
+	page-break-before: always;
+}
+
+#feedback, #ssl-code 
+{
+	display: none;
+}
+
+.receipt 
+{
+    margin-bottom: 2em;
+}
+
+/* self-clear floats */
+
+.group:after {
+	content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+    }
+
+* html .group { /* IE6 */
+	height: 1%;
+	}
+*:first-child+html .group { /* IE7 */
+	min-height: 1px;
+	}

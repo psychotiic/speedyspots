@@ -1,0 +1,34 @@
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots.Business\bin\Debug\SpeedySpots.Business.dll
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots.Business\bin\Debug\SpeedySpots.Business.pdb
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots.Business\bin\Debug\Elmah.dll
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots.Business\bin\Debug\InetSolution.Data.dll
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots.Business\bin\Debug\InetSolution.MemberProtect.dll
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots.Business\bin\Debug\InetSolution.Web.dll
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots.Business\bin\Debug\log4net.dll
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots.Business\bin\Debug\SpeedySpots.DataAccess.dll
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots.Business\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots.Business\bin\Debug\SpeedySpots.DataAccess.pdb
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots.Business\bin\Debug\Elmah.xml
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots.Business\bin\Debug\InetSolution.Web.pdb
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots.Business\bin\Debug\log4net.xml
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots.Business\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots.Business\obj\Debug\SpeedySpots.Business.csprojResolveAssemblyReference.cache
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots.Business\obj\Debug\SpeedySpots.Business.dll
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots.Business\obj\Debug\SpeedySpots.Business.pdb
+C:\Users\PsYChOTiiC\Desktop\David - Dev\iNet\dev-david\SpeedySpots.Business\bin\Debug\SpeedySpots.Business.dll
+C:\Users\PsYChOTiiC\Desktop\David - Dev\iNet\dev-david\SpeedySpots.Business\bin\Debug\SpeedySpots.Business.pdb
+C:\Users\PsYChOTiiC\Desktop\David - Dev\iNet\dev-david\SpeedySpots.Business\bin\Debug\Elmah.dll
+C:\Users\PsYChOTiiC\Desktop\David - Dev\iNet\dev-david\SpeedySpots.Business\bin\Debug\InetSolution.Data.dll
+C:\Users\PsYChOTiiC\Desktop\David - Dev\iNet\dev-david\SpeedySpots.Business\bin\Debug\InetSolution.MemberProtect.dll
+C:\Users\PsYChOTiiC\Desktop\David - Dev\iNet\dev-david\SpeedySpots.Business\bin\Debug\InetSolution.Web.dll
+C:\Users\PsYChOTiiC\Desktop\David - Dev\iNet\dev-david\SpeedySpots.Business\bin\Debug\log4net.dll
+C:\Users\PsYChOTiiC\Desktop\David - Dev\iNet\dev-david\SpeedySpots.Business\bin\Debug\SpeedySpots.DataAccess.dll
+C:\Users\PsYChOTiiC\Desktop\David - Dev\iNet\dev-david\SpeedySpots.Business\bin\Debug\Newtonsoft.Json.dll
+C:\Users\PsYChOTiiC\Desktop\David - Dev\iNet\dev-david\SpeedySpots.Business\bin\Debug\SpeedySpots.DataAccess.pdb
+C:\Users\PsYChOTiiC\Desktop\David - Dev\iNet\dev-david\SpeedySpots.Business\bin\Debug\Elmah.xml
+C:\Users\PsYChOTiiC\Desktop\David - Dev\iNet\dev-david\SpeedySpots.Business\bin\Debug\InetSolution.Web.pdb
+C:\Users\PsYChOTiiC\Desktop\David - Dev\iNet\dev-david\SpeedySpots.Business\bin\Debug\log4net.xml
+C:\Users\PsYChOTiiC\Desktop\David - Dev\iNet\dev-david\SpeedySpots.Business\bin\Debug\Newtonsoft.Json.xml
+C:\Users\PsYChOTiiC\Desktop\David - Dev\iNet\dev-david\SpeedySpots.Business\obj\Debug\SpeedySpots.Business.csprojResolveAssemblyReference.cache
+C:\Users\PsYChOTiiC\Desktop\David - Dev\iNet\dev-david\SpeedySpots.Business\obj\Debug\SpeedySpots.Business.dll
+C:\Users\PsYChOTiiC\Desktop\David - Dev\iNet\dev-david\SpeedySpots.Business\obj\Debug\SpeedySpots.Business.pdb

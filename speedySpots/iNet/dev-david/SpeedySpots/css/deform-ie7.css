@@ -1,0 +1,12 @@
+*:first-child+html .group {
+	min-height: 1px;
+}
+
+*:first-child+html fieldset .inputgroup {
+	margin-left: 25%;
+	 /* margin-top: -2.4em; not sure where the 1 is coming from in IE 7, but we need this here */
+}
+
+*:first-child+html fieldset input {
+	vertical-align: middle;
+}

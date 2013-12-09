@@ -1,0 +1,489 @@
+﻿body {
+background: #dbdbdb url("../img/pageHeaderMarginLarge.gif") top left repeat-x;
+font-size: 100%;
+font-family: "Trebuchet MS", Arial, Verdana, Helvetica, sans-serif;
+}
+
+a {
+	color: #06c;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+#wrapper {
+	margin: 0 auto;
+	max-width: 62.5em;
+}
+
+#header {
+	color: #fff;
+	background: #76000a url("../img/ss-header-bg.png") top left repeat-x;
+	height: 8.625em;
+	border-bottom: .375em solid #70001f;
+}
+
+#header h1#logo {
+	text-indent: -9999px;
+	background: url("../img/ss-logo.png") top left no-repeat;
+	height: 8.625em;
+}
+
+#header #top {
+	background: url("../img/ss-header-right.png") top right no-repeat;
+}
+
+/* --- navigation */
+
+#nav {
+	font-size: .75em;
+	line-height: 1.8333em;
+	padding: .333em;
+	background: #a4a4a4;
+}
+
+#nav ul 
+{
+	padding: 0 .833em;
+	background: #767676;
+	border-radius: .8333em;
+	-moz-border-radius: .833em;
+	-webkit-border-radius: .833em;
+}
+
+#nav ul li {
+	float: left;
+	width: 14.285714285714286%;
+}
+
+#nav ul li a {
+	display: block;
+	float: left;
+	width: 100%;
+	text-align: center;
+	color: #fff;
+}
+
+#nav ul li a:hover,
+#nav ul li.at a {
+	text-decoration: none;
+	background-color: #44b5de;
+}
+
+/* --- main body */
+
+#body {
+	color: #333;
+	background: #fff; /* url("../img/baseline-18.png") top left; */
+	padding: 0 1.8%;
+}
+
+.homepage {
+	float: left;
+	margin-right: .9%;
+	width: 29.6%;
+}
+
+.insidepage {
+	float: right;
+	margin-left: .9%;
+	padding-top: 1.125em;
+	width: 65%;
+}
+
+.sms-main {
+	float: left;
+	margin-right: .9%;
+	width: 65%;
+}
+
+.sms-side {
+	float: right;
+	margin-left: .9%;
+	width: 33.2%;
+}
+
+#body h2 {
+	font-size: 1.25em; /* 20 */
+	line-height: 1.8em;
+	padding-top: .55em; /* 11 */
+	margin-bottom: .35em; /* 7 */
+}
+
+#body .homepage p {
+	font-size: .875em; /* 14 */
+	line-height: 1.285714285714286em; /* 18 */
+	padding-top: .285714285714286em; /* 4 */
+	margin-bottom: 1em; /* 14 */
+}
+
+#body h3 {
+	font-size: 1em; /* 16 */
+	line-height: 1.125em; /* 18 */
+	padding-top: .1875em; /* 3 */
+	margin-bottom: .9375em; /* 15 */
+}
+
+#body p {
+	font-size: .75em; /* 12 */
+	line-height: 1.5em; /* 18 */
+	padding-top: .333em; /* 4 */
+	margin-bottom: 1.1666em; /* 14 */
+}
+
+#footer {
+	padding: 1.125em 1.125em 0;
+	color: #999;
+	background: rgba(219,219,219,100);
+	border: 1.125em solid #fff;
+}
+
+#copyright {
+	color: #666;
+	font-weight: bold;
+}
+
+#copyright p {
+	float: left;
+	font-size: .6875em; /* 11 */
+	line-height: 1.636363em; /* 18 */
+	padding-top: .454545em; /* 5 */
+	margin-bottom: 1.181818em; /* 13 */
+}
+
+#copyright #phone {
+	float: none;
+	text-align: right;
+}
+
+#disclaimer p {
+	font-size: .5625em; /* 9 */
+	line-height: 2em; /* 18 */
+	padding-top: .555em; /* 5 */
+	margin-bottom: 1.444em; /* 13 */
+}
+
+/* --- SMS messages */
+
+#body .message {
+	padding: .5625em 1.125em .5625em 3.125em;
+	margin-bottom: 1.125em;
+	background: rgba(255,153,0,.2) url("../img/error.png") .5625em no-repeat;
+	border: .0625em solid rgba(255,153,0,.5);
+}
+
+#body .message p {
+	margin: 0;
+	padding: 0;
+	font-size: 1em;
+	line-height: 2.125em;
+}
+
+#body .positive {
+	color: rgba(0,102,0,1);
+	background: rgba(0,102,0,.2) url("../img/accept.png") .5625em no-repeat;
+	border-color: rgba(0,102,0,.5);
+}
+
+#body .negative {
+	font-weight: bold;
+	color: rgba(204,0,0,1);;
+	background: rgba(204,0,0,.2) url("../img/exclamation.png") .5625em no-repeat;
+	border-color: rgba(204,0,0,.5);
+}
+
+/* --- SMS form */
+
+#body .form-holder {
+	padding: 0 1.125em 1.125em;
+	margin-bottom: 1.125em;
+	background: #d6d6d6;
+	background: rgba(51,51,51,.2);
+	border: 1px solid #999;
+	border: .0625em solid rgba(51,51,51,.5);
+}
+
+#body .filter {
+	padding-bottom: 0;
+	background: #cce0f5;
+	background: rgba(0,102,204,.2);
+	border-color: #7fb2e5;
+	border-color: rgba(0,102,204,.5);
+}
+
+#body .form-holder fieldset legend {
+	font-weight: bold;
+	font-size: 1.25em; /* 20 */
+	line-height: 1.8em;
+	padding-top: .5em; /* 10 */
+	margin-bottom: .3em; /* 6 */
+}
+
+#body .form-holder fieldset label {
+	font-size: .75em; /* 12 */
+	line-height: 1.5em; /* 18 */
+	padding-top: .41666em; /* 5 */
+	margin-bottom: 1.08333em; /* 13 */
+	float: left;
+	text-align: right;
+	width: 24%;
+	margin-right: 1%;
+	color: #5c5c5c;
+	color: rgba(51,51,51,.8);
+}
+
+#body .form-holder fieldset label .required {
+	font-size: 1.1666em;
+	line-height: 1.285714285714286em;
+	font-weight: bold;
+	color: #333;
+	color: rgba(51,51,51,1);
+	border-bottom: 1px dotted #5c5c5c;
+	border-bottom: 1px dotted rgba(51,51,51,.8);
+}
+
+#body p.required {
+	font-size: .875em; /* 14 */
+	line-height: 1.285714285714286em; /* 18 */
+	padding-top: .285714285714286em; /* 4 */
+	margin-bottom: .928571428571429em;
+	font-weight: bold;
+	color: #333;
+	color: rgba(51,51,51,1);
+	border-bottom: 1px solid #5c5c5c;
+	border-bottom: 1px dotted rgba(51,51,51,.8);
+}
+
+#body .form-holder fieldset input,
+html body .RadInput_Default .riTextBox {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: .75em; /* 12 */
+	padding: .41666em; /* 5 */
+	border: 1px solid #999;
+	border: 1px solid rgba(51,51,51,.5);
+	background: rgba(255,255,255,.5);
+}
+
+#body .form-holder fieldset input:focus {
+	background: rgba(255,255,255,1);
+}
+
+#body .form-holder fieldset .note-holder {
+	margin-left: 25%;
+}
+
+#body .form-holder fieldset .note-holder p.note {
+	font-size: .75em; /* 12 */
+	line-height: 1.5em; /* 18 */
+	padding-top: .01666em; /* 3 */
+	margin-top: .75em;
+	margin-bottom: 1.48333em; /* 15 */
+	font-style: italic;
+	color: rgba(0,0,0,.5);
+}
+
+#body .form-holder fieldset .inputgroup label {
+	float: none;
+	margin-right: 0;
+	margin-left: 1.5em;
+	width: auto;
+}
+
+#body .form-holder fieldset .nospace label {
+	width: 34%;
+}
+
+#body .form-holder fieldset .nospace .inputgroup {
+	width: 65%;
+}
+
+#body .form-holder fieldset .nospace .inputgroup label {
+	margin-left: 0;
+}
+
+#body .form-holder fieldset .inputgroup .note-holder {
+	float: left;
+	margin-left: 0;
+	margin-right: 1em;
+}
+
+#body .form-holder fieldset .inputgroup {
+float: left;
+width: 75%;
+}
+
+/* --- SMS Side Form */
+
+#body .sms-side fieldset .stacked label {
+	display: block;
+	float: none;
+	width: 100%;
+	text-align: left;
+}
+
+#body .sms-side fieldset .stacked .inputgroup {
+	display: block;
+	float: none;
+	width: 100%;
+	text-align: left;
+}
+
+#body .sms-side fieldset .button-row {
+	background: none;
+	margin-bottom: 0;
+}
+
+/* --- SMS Button Row */
+
+#body .button-row {
+	padding: .5625em 0 .5625em 25%;
+	margin-bottom: 1.125em;
+	background: #d6d6d6;
+	background: rgba(51,51,51,.2);
+}
+
+#body .action {
+	margin-bottom: 1.125em;
+	padding: .5625em;
+	background: #d6d6d6;
+	background: rgba(51,51,51,.2);
+}
+
+#body .filter .button-row {
+	margin-bottom: 0;
+	background: none;
+}
+
+#body .button-row a.button {
+	margin-right: 1.285714em;
+	padding-top: .3571428em;
+	padding-right: 1.285714em;
+	padding-bottom: .3571428em;
+	padding-left: 1.285714em;
+	font-size: .875em; /* 14 */
+	line-height: 2.571428571428571em;
+	color: #333;
+	color: rgba(51,51,51,1);
+	background: #d6d6d6 url("../img/glass.png") repeat-x 0 50%;
+	background: rgba(51,51,51,.2) url("../img/glass.png") repeat-x 0 50%;
+	border: 1px solid #666;
+	border: 1px solid rgba(51,51,51,.7);
+	border-radius: .6428571em;
+	-moz-border-radius: .6428571em;
+	-webkit-border-radius: .6428571em;
+}
+
+#body .button-row a.button:hover {
+	text-decoration: none;
+	color: rgba(255,255,255,1);
+	background-color: #5c5c5c;
+	background-color: rgba(51,51,51,.8);
+}
+
+#body .button-row a.primaryAction {
+	font-weight: bold;
+	color: #060;
+	background-color: #cce0cc;
+	border-color: #7fb27f;
+	-moz-box-shadow: 0 0 5px rgba(0,102,0,.8);
+}
+
+#body .button-row a.primaryAction:hover {
+	text-decoration: none;
+	color: #fff;
+	background-color: #338533;
+	border-color: #060;
+}
+
+#body .filter .button-row a.primaryAction 
+{
+	color: #06c;
+	background-color: #b2d1f0;
+	background-color: rgba(0,102,204,.3);
+	border-color: #66a3e0;
+	border-color: rgba(0,102,204,.6);
+	-moz-box-shadow: 0 0 5px rgba(0,102,204,.9);
+}
+
+#body .filter .button-row a.primaryAction:hover 
+{
+	color: #fff;
+	background-color: #3385d6;
+	background-color: rgba(0,102,204,.8);
+	border-color: #06c;
+}
+
+#body .button-row a.negativeAction {
+/* 	color: rgba(204,0,0,1);
+	background-color: rgba(204,0,0,.2);
+	border-color: rgba(204,0,0,.5);
+*/
+	margin-left: 2.571428em;
+}
+
+#body .button-row a.negativeAction:hover {
+	text-decoration: none;
+	color: #fff;
+	background-color: #d63333;
+	background-color: rgba(204,0,0,.8);
+	border-color: #c00;
+}
+
+/* --- SMS Notes */
+
+#body .sms-side .form-holder {
+	border-top: 0;
+	-moz-border-radius-bottomleft: .714285714285714em;
+	-moz-border-radius-bottomright: .714285714285714em;
+}
+
+#body .sms-side ul#side-tabs li {
+	float: left;
+	width: 33.333%;
+}
+
+#body .sms-side ul#side-tabs li#t-req a {
+	background-color: rgba(255,255,255,1);
+}
+
+#body .sms-side ul#side-tabs li#t-not a {
+	background-color: rgba(255,153,0,.2);
+	border-color: rgba(255,153,0,.5);
+	border-bottom-color: #999;
+	border-bottom-color: rgba(51,51,51,.5);
+}
+
+#body .sms-side ul#side-tabs li a {
+	display: block;
+	float: left;
+	width: 98%;
+	font-size: .875em;
+	text-align: center;
+	background: #d6d6d6;
+	background: rgba(51,51,51,.2);
+	line-height: 2.5em;
+	border: .071428571428571em solid #999;
+	border: .071428571428571em solid rgba(51,51,51,.5);
+	-moz-border-radius-topleft: .714285714285714em;
+	-moz-border-radius-topright: .714285714285714em;
+	color: #333;
+	color: rgba(51,51,51,1);
+}
+
+#body .sms-side ul#side-tabs li.selected a {
+	border-bottom-color: rgba(51,51,51,0);
+}
+
+/* clearfix */
+
+.group:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}

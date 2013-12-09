@@ -1,0 +1,59 @@
+
+[Session starts]
+
+[Session ends]
+
+[Session starts]
+
+[Session ends]
+
+[Session starts]
+2013-08-21 10:33:41,429 [132] INFO  SpeedySpots.Business.Services.CreditCardService.LogResults-20() [(null)] <(null)> – [I00001] Successful.
+
+[Session ends]
+
+[Session starts]
+
+[Session ends]
+
+[Session starts]
+2013-08-21 18:25:56,339 [34] INFO  SpeedySpots.Business.Services.CreditCardService.LogResults-20() [(null)] <(null)> – [I00001] Successful.
+
+[Session starts]
+
+[Session ends]
+
+[Session starts]
+
+[Session ends]
+
+[Session starts]
+
+[Session ends]
+
+[Session starts]
+
+[Session ends]
+
+[Session starts]
+
+[Session ends]
+
+[Session starts]
+
+[Session ends]
+
+[Session starts]
+
+[Session ends]
+
+[Session starts]
+
+[Session ends]
+
+[Session starts]
+2013-08-23 14:12:21,673 [15] INFO  SpeedySpots.Business.Services.CreditCardService.LogResults-20() [(null)] <(null)> – [I00001] Successful.
+2013-08-23 14:12:39,186 [15] INFO  SpeedySpots.Business.Services.CreditCardService.LogResults-20() [(null)] <(null)> – [I00001] Successful.
+2013-08-23 14:12:47,277 [21] INFO  SpeedySpots.Business.Services.CreditCardService.LogResults-20() [(null)] <(null)> – [I00001] Successful.
+
+[Session ends]

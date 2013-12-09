@@ -1,0 +1,1121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{32D48DE1-3949-41D3-85AF-3E5606010396}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SpeedySpots</RootNamespace>
+    <AssemblyName>SpeedySpots</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <UseIISExpress>true</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <ErrorReport>prompt</ErrorReport>
+    <ExcludeApp_Data>true</ExcludeApp_Data>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Squid|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AntiXssLibrary, Version=1.5.0.0, Culture=neutral, PublicKeyToken=5906d2bb3d8a12c4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependancies\AntiXssLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmah, Version=1.1.11228.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependancies\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="InetSolution.Data">
+      <HintPath>..\Dependancies\InetSolution.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="InetSolution.MemberProtect">
+      <HintPath>..\Dependancies\InetSolution.MemberProtect.dll</HintPath>
+    </Reference>
+    <Reference Include="InetSolution.Web, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependancies\InetSolution.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqKit, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bc217f8844052a91, processorArchitecture=MSIL">
+      <HintPath>..\packages\LinqKit.1.0\lib\35\LinqKit.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.0\lib\net35-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SX">
+      <HintPath>..\Dependancies\SX.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Telerik.Web.Design, Version=2012.3.1308.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependancies\Telerik.Web.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Web.UI, Version=2010.1.415.20, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependancies\Telerik.Web.UI.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="404error.aspx" />
+    <Content Include="500error.aspx" />
+    <Content Include="admin-dashboard.aspx" />
+    <Content Include="ajax-company-lookup.aspx" />
+    <Content Include="ajax-new-message.aspx" />
+    <Content Include="ajax-request-label.aspx" />
+    <Content Include="ajax-send-feedback.aspx" />
+    <Content Include="ajax-staff-requests-dashboard.aspx" />
+    <Content Include="ajax-update-activity.aspx" />
+    <Content Include="ajax-user-lookup.aspx" />
+    <Content Include="ajax-validate-payment.aspx" />
+    <Content Include="application-offline.aspx" />
+    <Content Include="companies.aspx" />
+    <Content Include="company-modify.aspx" />
+    <Content Include="Controls\Containers\SpeedySpotsTabs.ascx" />
+    <Content Include="Controls\SpotDetails.ascx" />
+    <Content Include="Controls\SpotControls\TalentAssignment.ascx" />
+    <Content Include="Controls\StaffDashboardRequests.ascx" />
+    <Content Include="Controls\Tabs\Customer-Tabs.ascx" />
+    <Content Include="Controls\Tabs\JobDetails.ascx" />
+    <Content Include="Controls\Tabs\RequestDetails.ascx" />
+    <Content Include="Controls\Tabs\RequestNotes.ascx" />
+    <Content Include="Controls\Tabs\Talent-Tabs.ascx" />
+    <Content Include="user-edit-creditcard.aspx" />
+    <Content Include="css\bootstrap-icons.min.css" />
+    <Content Include="css\ie7-hacks.css" />
+    <Content Include="img\broken-record-red.jpg" />
+    <Content Include="img\dropdown.blue.active.png" />
+    <Content Include="img\dropdown.blue.hover.png" />
+    <Content Include="img\dropdown.blue.png" />
+    <Content Include="img\dropdown.gif" />
+    <Content Include="img\dropdown_active.gif" />
+    <Content Include="img\dropdown_hover.gif" />
+    <Content Include="img\dropup.gif" />
+    <Content Include="img\glyphicons-halflings-green.png" />
+    <Content Include="img\glyphicons-halflings-white.png" />
+    <Content Include="img\glyphicons-halflings.png" />
+    <Content Include="img\icon-music.png" />
+    <Content Include="img\icon-plus.png" />
+    <Content Include="img\LoadingIcon.gif" />
+    <Content Include="img\page_white_put.png" />
+    <Content Include="img\page_white_tick.png" />
+    <Content Include="img\user.png" />
+    <Content Include="js\formfill.js" />
+    <Content Include="js\jquery.bgiframe.min.js" />
+    <Content Include="js\jquery.multiSelect.min.js" />
+    <Content Include="js\jquery.multiSelect.js" />
+    <Content Include="js\Placeholders.min.js" />
+    <Content Include="js\Staff.Dashboard.Requests.js" />
+    <Content Include="pageBreakPreview.aspx" />
+    <Content Include="rates-narration.aspx" />
+    <Content Include="rates-spots.aspx" />
+    <Content Include="rates.aspx" />
+    <Content Include="site-unavailable.html" />
+    <Content Include="staff-dashboard-completed.aspx" />
+    <Content Include="staff-dashboard-new.aspx" />
+    <Content Include="talent-production-orders-to-qc.aspx" />
+    <Content Include="user-creditcards.aspx" />
+    <Content Include="user-reactivate.aspx" />
+    <Content Include="user-requests.aspx" />
+    <Content Include="view-production-notes.aspx" />
+    <Content Include="edit-request.aspx" />
+    <Content Include="css\colorbox.css" />
+    <Content Include="css\jquery.flexbox.css" />
+    <Content Include="css\lightbox-form.css" />
+    <Content Include="css\screen.css" />
+    <Content Include="css\sssms-forms.css" />
+    <Content Include="css\sssms-ie-hacks.css" />
+    <Content Include="css\sssms-lists.css" />
+    <Content Include="css\sssms-print.css" />
+    <Content Include="css\sssms.css" />
+    <Content Include="ajax-customer-lookup.aspx" />
+    <Content Include="Default.aspx" />
+    <Content Include="download.aspx" />
+    <Content Include="email-templates-modify.aspx" />
+    <Content Include="email-templates.aspx" />
+    <Content Include="error.aspx" />
+    <Content Include="fla\dewplayer-mini.swf" />
+    <Content Include="fla\player_mp3_mini.swf" />
+    <Content Include="Global.asax" />
+    <Content Include="img\accept.png" />
+    <Content Include="img\application_view_list.png" />
+    <Content Include="img\arrow_down.png" />
+    <Content Include="img\baseline-18.png" />
+    <Content Include="img\bg-pagebreak.png" />
+    <Content Include="img\bg-right.png" />
+    <Content Include="img\broken-record.jpg" />
+    <Content Include="img\checkout-bg.png" />
+    <Content Include="img\checkout-div.png" />
+    <Content Include="img\close.png" />
+    <Content Include="img\colorbox\border.png" />
+    <Content Include="img\colorbox\controls.png" />
+    <Content Include="img\colorbox\ie6\borderBottomCenter.png" />
+    <Content Include="img\colorbox\ie6\borderBottomLeft.png" />
+    <Content Include="img\colorbox\ie6\borderBottomRight.png" />
+    <Content Include="img\colorbox\ie6\borderMiddleLeft.png" />
+    <Content Include="img\colorbox\ie6\borderMiddleRight.png" />
+    <Content Include="img\colorbox\ie6\borderTopCenter.png" />
+    <Content Include="img\colorbox\ie6\borderTopLeft.png" />
+    <Content Include="img\colorbox\ie6\borderTopRight.png" />
+    <Content Include="img\colorbox\loading.gif" />
+    <Content Include="img\colorbox\loading_background.png" />
+    <Content Include="img\colorbox\overlay.png" />
+    <Content Include="img\comment_add.png" />
+    <Content Include="img\email_go.png" />
+    <Content Include="img\email_open.png" />
+    <Content Include="img\error.png" />
+    <Content Include="img\error_small.png" />
+    <Content Include="img\exclamation.png" />
+    <Content Include="img\glass.png" />
+    <Content Include="img\leave-feedback.png" />
+    <Content Include="img\loading3.gif" />
+    <Content Include="img\logo-sm.png" />
+    <Content Include="img\miniclose.png" />
+    <Content Include="img\pageHeaderMarginSmall.gif" />
+    <Content Include="img\req-line.png" />
+    <Content Include="img\rosette-off.png" />
+    <Content Include="img\rosette.png" />
+    <Content Include="img\ss-header-bg.png" />
+    <Content Include="img\ss-header-right.png" />
+    <Content Include="img\ss-logo-print.gif" />
+    <Content Include="img\ss-logo.png" />
+    <Content Include="img\status_busy.png" />
+    <Content Include="img\tab-bg.png" />
+    <Content Include="img\WebResource.gif" />
+    <Content Include="js\common.js" />
+    <Content Include="js\jquery.colorbox-min.js" />
+    <Content Include="js\jquery.flexbox.min.js" />
+    <Content Include="js\jquery.hotkeys.js" />
+    <Content Include="js\jquery.js" />
+    <Content Include="js\jquery.tmpl.js" />
+    <Content Include="js\mootools.js" />
+    <Content Include="js\stars\jquery.ui.stars.css" />
+    <Content Include="js\stars\jquery.ui.stars.gif" />
+    <Content Include="js\stars\jquery.ui.stars.js" />
+    <Content Include="js\stars\jquery.ui.stars.min.css" />
+    <Content Include="js\stars\jquery.ui.stars.min.js" />
+    <Content Include="label-modify.aspx" />
+    <Content Include="labels.aspx" />
+    <Content Include="login-change-password.aspx" />
+    <Content Include="login-reset.aspx" />
+    <Content Include="logoff.aspx" />
+    <Content Include="img\music.png" />
+    <Content Include="img\note.png" />
+    <Content Include="img\page_white_text.png" />
+    <Content Include="img\pencil.png" />
+    <Content Include="InetActive\css\grid.css" />
+    <Content Include="InetActive\css\ie.css" />
+    <Content Include="InetActive\css\ie6.css" />
+    <Content Include="InetActive\css\inetactive.css" />
+    <Content Include="InetActive\css\inetactive08.css" />
+    <Content Include="InetActive\css\layout.css" />
+    <Content Include="InetActive\css\nav.css" />
+    <Content Include="InetActive\css\reset.css" />
+    <Content Include="InetActive\css\text.css" />
+    <Content Include="InetActive\Default.aspx" />
+    <Content Include="InetActive\images\accept.png" />
+    <Content Include="InetActive\images\award_star_gold_1.png" />
+    <Content Include="InetActive\images\background_blue.gif" />
+    <Content Include="InetActive\images\background_green.gif" />
+    <Content Include="InetActive\images\bg_button_a.gif" />
+    <Content Include="InetActive\images\bg_button_a_neg.gif" />
+    <Content Include="InetActive\images\bg_button_a_pos.gif" />
+    <Content Include="InetActive\images\bg_button_span.gif" />
+    <Content Include="InetActive\images\bg_button_span_neg.gif" />
+    <Content Include="InetActive\images\bg_button_span_pos.gif" />
+    <Content Include="InetActive\images\box.png" />
+    <Content Include="InetActive\images\buttonbg.gif" />
+    <Content Include="InetActive\images\cog.png" />
+    <Content Include="InetActive\images\cross.png" />
+    <Content Include="InetActive\images\disconnect.png" />
+    <Content Include="InetActive\images\email.png" />
+    <Content Include="InetActive\images\error.png" />
+    <Content Include="InetActive\images\exclamation.png" />
+    <Content Include="InetActive\images\folder_edit.png" />
+    <Content Include="InetActive\images\folder_user.png" />
+    <Content Include="InetActive\images\group.png" />
+    <Content Include="InetActive\images\headerbg.gif" />
+    <Content Include="InetActive\images\logo.gif" />
+    <Content Include="InetActive\images\medal_gold_1.png" />
+    <Content Include="InetActive\images\new_sm_ico.gif" />
+    <Content Include="InetActive\images\page_attach.png" />
+    <Content Include="InetActive\images\page_edit.png" />
+    <Content Include="InetActive\images\page_white.png" />
+    <Content Include="InetActive\images\page_white_excel.png" />
+    <Content Include="InetActive\images\page_white_text.png" />
+    <Content Include="InetActive\images\page_white_world.png" />
+    <Content Include="InetActive\images\tabcl.gif" />
+    <Content Include="InetActive\images\tabcr.gif" />
+    <Content Include="InetActive\images\tabl.gif" />
+    <Content Include="InetActive\images\tabr.gif" />
+    <Content Include="InetActive\images\tick.png" />
+    <Content Include="InetActive\images\user.png" />
+    <Content Include="InetActive\images\user_add.png" />
+    <Content Include="InetActive\login.aspx" />
+    <Content Include="InetActive\logout.aspx" />
+    <Content Include="InetActive\MemberProtectParams.aspx" />
+    <Content Include="InetActive\OrganizationEdit.aspx" />
+    <Content Include="InetActive\OrganizationList.aspx" />
+    <Content Include="InetActive\RoleEdit.aspx" />
+    <Content Include="InetActive\RoleList.aspx" />
+    <Content Include="InetActive\scripts\common.js" />
+    <Content Include="InetActive\siteparams.aspx" />
+    <Content Include="InetActive\UserEdit.aspx" />
+    <Content Include="InetActive\UserList.aspx" />
+    <Content Include="js\common.js" />
+    <Content Include="js\lightbox-form.js" />
+    <Content Include="js\mootools.js" />
+    <Content Include="create-production-order.aspx" />
+    <Content Include="messages-inbox.aspx" />
+    <Content Include="messages-send.aspx" />
+    <Content Include="messages-view.aspx" />
+    <Content Include="create-estimate.aspx" />
+    <Content Include="music.aspx" />
+    <Content Include="out-of-office.aspx" />
+    <Content Include="payments\default.aspx" />
+    <Content Include="payments\termsandconditions.aspx" />
+    <Content Include="phonetic-tips.aspx" />
+    <Content Include="producer-talent-availability-rss.aspx" />
+    <Content Include="producer-talent-availability.aspx" />
+    <Content Include="quality-control-spot-details.aspx" />
+    <Content Include="quality-control-job-details.aspx" />
+    <Content Include="report-unavailability.aspx" />
+    <Content Include="site-settings.aspx" />
+    <Content Include="talent-my-availability.aspx" />
+    <Content Include="talent-production-orders-completed.aspx" />
+    <Content Include="Uploads\readme.txt" />
+    <Content Include="user-upgrade.aspx" />
+    <Content Include="view-estimate.aspx" />
+    <Content Include="view-notes-script.aspx" />
+    <Content Include="view-script.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="404error.aspx.cs">
+      <DependentUpon>404error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="404error.aspx.designer.cs">
+      <DependentUpon>404error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="500error.aspx.cs">
+      <DependentUpon>500error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="500error.aspx.designer.cs">
+      <DependentUpon>500error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin-dashboard.aspx.cs">
+      <DependentUpon>admin-dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin-dashboard.aspx.designer.cs">
+      <DependentUpon>admin-dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ajax-company-lookup.aspx.cs">
+      <DependentUpon>ajax-company-lookup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ajax-company-lookup.aspx.designer.cs">
+      <DependentUpon>ajax-company-lookup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ajax-new-message.aspx.cs">
+      <DependentUpon>ajax-new-message.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ajax-new-message.aspx.designer.cs">
+      <DependentUpon>ajax-new-message.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ajax-request-label.aspx.cs">
+      <DependentUpon>ajax-request-label.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ajax-request-label.aspx.designer.cs">
+      <DependentUpon>ajax-request-label.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ajax-send-feedback.aspx.cs">
+      <DependentUpon>ajax-send-feedback.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ajax-send-feedback.aspx.designer.cs">
+      <DependentUpon>ajax-send-feedback.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ajax-staff-requests-dashboard.aspx.cs">
+      <DependentUpon>ajax-staff-requests-dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ajax-staff-requests-dashboard.aspx.designer.cs">
+      <DependentUpon>ajax-staff-requests-dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ajax-update-activity.aspx.cs">
+      <DependentUpon>ajax-update-activity.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ajax-update-activity.aspx.designer.cs">
+      <DependentUpon>ajax-update-activity.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ajax-user-lookup.aspx.cs">
+      <DependentUpon>ajax-user-lookup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ajax-user-lookup.aspx.designer.cs">
+      <DependentUpon>ajax-user-lookup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ajax-validate-payment.aspx.cs">
+      <DependentUpon>ajax-validate-payment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ajax-validate-payment.aspx.designer.cs">
+      <DependentUpon>ajax-validate-payment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="application-offline.aspx.cs">
+      <DependentUpon>application-offline.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="application-offline.aspx.designer.cs">
+      <DependentUpon>application-offline.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="companies.aspx.cs">
+      <DependentUpon>companies.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="companies.aspx.designer.cs">
+      <DependentUpon>companies.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="company-modify.aspx.cs">
+      <DependentUpon>company-modify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company-modify.aspx.designer.cs">
+      <DependentUpon>company-modify.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Containers\SpeedySpotsTabs.ascx.cs">
+      <DependentUpon>SpeedySpotsTabs.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Containers\SpeedySpotsTabs.ascx.designer.cs">
+      <DependentUpon>SpeedySpotsTabs.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\InetLinkButton.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\SiteBaseControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\SpotDetails.ascx.cs">
+      <DependentUpon>SpotDetails.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\SpotDetails.ascx.designer.cs">
+      <DependentUpon>SpotDetails.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SpotControls\TalentAssignment.ascx.cs">
+      <DependentUpon>TalentAssignment.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\SpotControls\TalentAssignment.ascx.designer.cs">
+      <DependentUpon>TalentAssignment.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\StaffDashboardRequests.ascx.cs">
+      <DependentUpon>StaffDashboardRequests.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\StaffDashboardRequests.ascx.designer.cs">
+      <DependentUpon>StaffDashboardRequests.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Tabs\Customer-Tabs.ascx.cs">
+      <DependentUpon>Customer-Tabs.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Tabs\Customer-Tabs.ascx.designer.cs">
+      <DependentUpon>Customer-Tabs.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Tabs\JobDetails.ascx.cs">
+      <DependentUpon>JobDetails.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Tabs\JobDetails.ascx.designer.cs">
+      <DependentUpon>JobDetails.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Tabs\RequestDetails.ascx.cs">
+      <DependentUpon>RequestDetails.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Tabs\RequestDetails.ascx.designer.cs">
+      <DependentUpon>RequestDetails.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Tabs\RequestNotes.ascx.cs">
+      <DependentUpon>RequestNotes.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Tabs\RequestNotes.ascx.designer.cs">
+      <DependentUpon>RequestNotes.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ajax-customer-lookup.aspx.cs">
+      <DependentUpon>ajax-customer-lookup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ajax-customer-lookup.aspx.designer.cs">
+      <DependentUpon>ajax-customer-lookup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Tabs\Talent-Tabs.ascx.cs">
+      <DependentUpon>Talent-Tabs.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Tabs\Talent-Tabs.ascx.designer.cs">
+      <DependentUpon>Talent-Tabs.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="messages-inbox.aspx.designer.cs">
+      <DependentUpon>messages-inbox.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="messages-view.aspx.designer.cs">
+      <DependentUpon>messages-view.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user-edit-creditcard.aspx.cs">
+      <DependentUpon>user-edit-creditcard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user-edit-creditcard.aspx.designer.cs">
+      <DependentUpon>user-edit-creditcard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\AjaxBasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Objects\LinqDebugTextWriter.cs" />
+    <Compile Include="pageBreakPreview.aspx.cs">
+      <DependentUpon>pageBreakPreview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pageBreakPreview.aspx.designer.cs">
+      <DependentUpon>pageBreakPreview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="rates-narration.aspx.cs">
+      <DependentUpon>rates-narration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="rates-narration.aspx.designer.cs">
+      <DependentUpon>rates-narration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="rates-spots.aspx.cs">
+      <DependentUpon>rates-spots.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="rates-spots.aspx.designer.cs">
+      <DependentUpon>rates-spots.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="rates.aspx.cs">
+      <DependentUpon>rates.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="rates.aspx.designer.cs">
+      <DependentUpon>rates.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="staff-dashboard-completed.aspx.cs">
+      <DependentUpon>staff-dashboard-completed.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="staff-dashboard-completed.aspx.designer.cs">
+      <DependentUpon>staff-dashboard-completed.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="staff-dashboard-new.aspx.cs">
+      <DependentUpon>staff-dashboard-new.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="staff-dashboard-new.aspx.designer.cs">
+      <DependentUpon>staff-dashboard-new.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="talent-production-orders-to-qc.aspx.cs">
+      <DependentUpon>talent-production-orders-to-qc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="talent-production-orders-to-qc.aspx.designer.cs">
+      <DependentUpon>talent-production-orders-to-qc.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user-creditcards.aspx.cs">
+      <DependentUpon>user-creditcards.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user-creditcards.aspx.designer.cs">
+      <DependentUpon>user-creditcards.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user-reactivate.aspx.cs">
+      <DependentUpon>user-reactivate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user-reactivate.aspx.designer.cs">
+      <DependentUpon>user-reactivate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user-requests.aspx.cs">
+      <DependentUpon>user-requests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user-requests.aspx.designer.cs">
+      <DependentUpon>user-requests.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="view-production-notes.aspx.cs">
+      <DependentUpon>view-production-notes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="view-production-notes.aspx.designer.cs">
+      <DependentUpon>view-production-notes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="edit-request.aspx.cs">
+      <DependentUpon>edit-request.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="edit-request.aspx.designer.cs">
+      <DependentUpon>edit-request.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="email-templates-modify.aspx.cs">
+      <DependentUpon>email-templates-modify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="email-templates-modify.aspx.designer.cs">
+      <DependentUpon>email-templates-modify.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="email-templates.aspx.cs">
+      <DependentUpon>email-templates.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="email-templates.aspx.designer.cs">
+      <DependentUpon>email-templates.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="error.aspx.cs">
+      <DependentUpon>error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="error.aspx.designer.cs">
+      <DependentUpon>error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="label-modify.aspx.cs">
+      <DependentUpon>label-modify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="label-modify.aspx.designer.cs">
+      <DependentUpon>label-modify.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="labels.aspx.cs">
+      <DependentUpon>labels.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="labels.aspx.designer.cs">
+      <DependentUpon>labels.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="messages-inbox.aspx.cs">
+      <DependentUpon>messages-inbox.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="messages-send.aspx.cs">
+      <DependentUpon>messages-send.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="messages-send.aspx.designer.cs">
+      <DependentUpon>messages-send.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="messages-view.aspx.cs">
+      <DependentUpon>messages-view.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="create-request-confirm.aspx.cs">
+      <DependentUpon>create-request-confirm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="create-request-confirm.aspx.designer.cs">
+      <DependentUpon>create-request-confirm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="download.aspx.cs">
+      <DependentUpon>download.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="download.aspx.designer.cs">
+      <DependentUpon>download.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="login-change-password.aspx.cs">
+      <DependentUpon>login-change-password.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="login-change-password.aspx.designer.cs">
+      <DependentUpon>login-change-password.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="login-reset.aspx.cs">
+      <DependentUpon>login-reset.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="login-reset.aspx.designer.cs">
+      <DependentUpon>login-reset.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="create-production-order.aspx.cs">
+      <DependentUpon>create-production-order.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="create-production-order.aspx.designer.cs">
+      <DependentUpon>create-production-order.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="create-job.aspx.cs">
+      <DependentUpon>create-job.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="create-job.aspx.designer.cs">
+      <DependentUpon>create-job.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="create-request.aspx.cs">
+      <DependentUpon>create-request.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="create-request.aspx.designer.cs">
+      <DependentUpon>create-request.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="logoff.aspx.cs">
+      <DependentUpon>logoff.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="logoff.aspx.designer.cs">
+      <DependentUpon>logoff.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="music.aspx.cs">
+      <DependentUpon>music.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="music.aspx.designer.cs">
+      <DependentUpon>music.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\InvoicePayment.cs" />
+    <Compile Include="Objects\SpotFee.cs" />
+    <Compile Include="Objects\UpgradeAccount.cs" />
+    <Compile Include="out-of-office.aspx.cs">
+      <DependentUpon>out-of-office.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="out-of-office.aspx.designer.cs">
+      <DependentUpon>out-of-office.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="payments\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="payments\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="payments\termsandconditions.aspx.cs">
+      <DependentUpon>termsandconditions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="payments\termsandconditions.aspx.designer.cs">
+      <DependentUpon>termsandconditions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="phonetic-tips.aspx.cs">
+      <DependentUpon>phonetic-tips.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="phonetic-tips.aspx.designer.cs">
+      <DependentUpon>phonetic-tips.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="producer-talent-availability-rss.aspx.cs">
+      <DependentUpon>producer-talent-availability-rss.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="producer-talent-availability-rss.aspx.designer.cs">
+      <DependentUpon>producer-talent-availability-rss.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="producer-talent-availability.aspx.cs">
+      <DependentUpon>producer-talent-availability.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="producer-talent-availability.aspx.designer.cs">
+      <DependentUpon>producer-talent-availability.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="report-unavailability.aspx.cs">
+      <DependentUpon>report-unavailability.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="report-unavailability.aspx.designer.cs">
+      <DependentUpon>report-unavailability.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="site-settings.aspx.cs">
+      <DependentUpon>site-settings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="site-settings.aspx.designer.cs">
+      <DependentUpon>site-settings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="talent-my-availability.aspx.cs">
+      <DependentUpon>talent-my-availability.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="talent-my-availability.aspx.designer.cs">
+      <DependentUpon>talent-my-availability.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="talent-production-order-details.aspx.cs">
+      <DependentUpon>talent-production-order-details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="talent-production-order-details.aspx.designer.cs">
+      <DependentUpon>talent-production-order-details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\Enums.cs" />
+    <Compile Include="user-account.aspx.cs">
+      <DependentUpon>user-account.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user-account.aspx.designer.cs">
+      <DependentUpon>user-account.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user-registration.aspx.cs">
+      <DependentUpon>user-registration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user-registration.aspx.designer.cs">
+      <DependentUpon>user-registration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InetActive\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InetActive\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InetActive\InetActive.Master.cs">
+      <DependentUpon>InetActive.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InetActive\InetActive.Master.designer.cs">
+      <DependentUpon>InetActive.Master</DependentUpon>
+    </Compile>
+    <Compile Include="InetActive\login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InetActive\login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InetActive\logout.aspx.cs">
+      <DependentUpon>logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InetActive\logout.aspx.designer.cs">
+      <DependentUpon>logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InetActive\MemberProtectParams.aspx.cs">
+      <DependentUpon>MemberProtectParams.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InetActive\MemberProtectParams.aspx.designer.cs">
+      <DependentUpon>MemberProtectParams.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InetActive\Objects\InetActiveBasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InetActive\OrganizationEdit.aspx.cs">
+      <DependentUpon>OrganizationEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InetActive\OrganizationEdit.aspx.designer.cs">
+      <DependentUpon>OrganizationEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InetActive\OrganizationList.aspx.cs">
+      <DependentUpon>OrganizationList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InetActive\OrganizationList.aspx.designer.cs">
+      <DependentUpon>OrganizationList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InetActive\RoleEdit.aspx.cs">
+      <DependentUpon>RoleEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InetActive\RoleEdit.aspx.designer.cs">
+      <DependentUpon>RoleEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InetActive\RoleList.aspx.cs">
+      <DependentUpon>RoleList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InetActive\RoleList.aspx.designer.cs">
+      <DependentUpon>RoleList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InetActive\siteparams.aspx.cs">
+      <DependentUpon>siteparams.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InetActive\siteparams.aspx.designer.cs">
+      <DependentUpon>siteparams.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InetActive\UserEdit.aspx.cs">
+      <DependentUpon>UserEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InetActive\UserEdit.aspx.designer.cs">
+      <DependentUpon>UserEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InetActive\UserList.aspx.cs">
+      <DependentUpon>UserList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InetActive\UserList.aspx.designer.cs">
+      <DependentUpon>UserList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="create-estimate.aspx.cs">
+      <DependentUpon>create-estimate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="create-estimate.aspx.designer.cs">
+      <DependentUpon>create-estimate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="quality-control-spot-details.aspx.cs">
+      <DependentUpon>quality-control-spot-details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="quality-control-spot-details.aspx.designer.cs">
+      <DependentUpon>quality-control-spot-details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="quality-control-job-details.aspx.cs">
+      <DependentUpon>quality-control-job-details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="quality-control-job-details.aspx.designer.cs">
+      <DependentUpon>quality-control-job-details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="talent-production-orders-completed.aspx.cs">
+      <DependentUpon>talent-production-orders-completed.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="talent-production-orders-completed.aspx.designer.cs">
+      <DependentUpon>talent-production-orders-completed.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\ApplicationContext.cs" />
+    <Compile Include="Objects\BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Objects\SiteBasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="order-details.aspx.cs">
+      <DependentUpon>order-details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="order-details.aspx.designer.cs">
+      <DependentUpon>order-details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="staff-dashboard.aspx.cs">
+      <DependentUpon>staff-dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="staff-dashboard.aspx.designer.cs">
+      <DependentUpon>staff-dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="talent-dashboard.aspx.cs">
+      <DependentUpon>talent-dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="talent-dashboard.aspx.designer.cs">
+      <DependentUpon>talent-dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user-dashboard.aspx.cs">
+      <DependentUpon>user-dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user-dashboard.aspx.designer.cs">
+      <DependentUpon>user-dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user-upgrade.aspx.cs">
+      <DependentUpon>user-upgrade.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user-upgrade.aspx.designer.cs">
+      <DependentUpon>user-upgrade.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="view-estimate.aspx.cs">
+      <DependentUpon>view-estimate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="view-estimate.aspx.designer.cs">
+      <DependentUpon>view-estimate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="view-notes-script.aspx.cs">
+      <DependentUpon>view-notes-script.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="view-notes-script.aspx.designer.cs">
+      <DependentUpon>view-notes-script.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="view-script.aspx.cs">
+      <DependentUpon>view-script.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="view-script.aspx.designer.cs">
+      <DependentUpon>view-script.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\reset.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="InetActive\InetActive.Master" />
+    <Content Include="Site.Master" />
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="create-request-confirm.aspx" />
+    <Content Include="css\speedyspots.css" />
+    <Content Include="create-job.aspx" />
+    <Content Include="create-request.aspx" />
+    <Content Include="login.aspx" />
+    <Content Include="talent-production-order-details.aspx" />
+    <Content Include="user-account.aspx" />
+    <Content Include="user-registration.aspx" />
+    <Content Include="img\h2_trigger_a.gif" />
+    <Content Include="img\pageHeaderMarginLarge.gif" />
+    <Content Include="MemberProtect.key">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MemberProtect.lic">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="order-details.aspx" />
+    <Content Include="staff-dashboard.aspx" />
+    <Content Include="talent-dashboard.aspx" />
+    <Content Include="user-dashboard.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SpeedySpots.Business\SpeedySpots.Business.csproj">
+      <Project>{D1C604D1-F800-41D4-9E62-158CB009A914}</Project>
+      <Name>SpeedySpots.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SpeedySpots.DataAccess\SpeedySpots.DataAccess.csproj">
+      <Project>{C7E12D41-8F30-47EE-9913-4A893CA68163}</Project>
+      <Name>SpeedySpots.DataAccess</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\LocalDeploy.pubxml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>49483</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:52483/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

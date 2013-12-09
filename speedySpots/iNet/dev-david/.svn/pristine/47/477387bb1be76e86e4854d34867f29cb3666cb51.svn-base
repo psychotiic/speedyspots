@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <appSettings>
+    <add key="UploadPath" value="E:\Domains\ss.inetsolution.com\SMSFiles\Uploads\" xdt:Transform="SetAttributes" xdt:Locator="Match(key)" />
+  </appSettings>
+  <connectionStrings>
+    <add name="MemberProtectConnectionString" connectionString="Data Source=FISH;Initial Catalog=SpeedySpots;Persist Security Info=True;User ID=memberprotectdbuser;Password=ampledog" providerName="System.Data.SqlClient"
+      xdt:Transform="SetAttributes" xdt:Locator="Match(name)"/>
+  </connectionStrings>
+  <system.web>
+    <httpHandlers>
+      <!--<remove type="ComponentArt.Web.UI.CallbackHandler,ComponentArt.Web.UI" path="*.aspx" verb="*" />-->
+    </httpHandlers>
+  </system.web>
+</configuration>

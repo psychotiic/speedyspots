@@ -1,0 +1,19 @@
+﻿{CompanyName}, 
+
+Your monthly invoice is attached. You may {InvoiceUrl}.
+
+Please pay special attention to the Balance Due at the bottom of the invoice. If any prepayments or credits have been applied to this invoice then the Balance Due will not be the same as the Invoice Total. Please pay the Balance Due.
+
+To make a payment {PaymentUrl}.
+
+Thank you for your business – we appreciate it very much.
+
+Sincerely,
+
+Rhonda Ball
+Accounting Office Manager
+Speedy Spots, Inc.
+734-475-9327
+734-475-4645 fax
+
+**All accounts that have an invoice 60 days past due will be put on Prepay status**

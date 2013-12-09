@@ -1,0 +1,34 @@
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots Quickbook Connector\bin\Debug\SpeedySpots Quickbook Connector.exe.config
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots Quickbook Connector\bin\Debug\Dependencies\7z.dll
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots Quickbook Connector\bin\Debug\Templates\invoice.html
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots Quickbook Connector\bin\Debug\Templates\invoice_email.txt
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots Quickbook Connector\bin\Debug\SpeedySpots Quickbook Connector.exe.manifest
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots Quickbook Connector\bin\Debug\SpeedySpots Quickbook Connector.application
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots Quickbook Connector\bin\Debug\SpeedySpots Quickbook Connector.exe
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots Quickbook Connector\bin\Debug\SpeedySpots Quickbook Connector.pdb
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots Quickbook Connector\bin\Debug\InetSolution.Web.dll
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots Quickbook Connector\bin\Debug\log4net.dll
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots Quickbook Connector\bin\Debug\nsoftware.InQB.dll
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots Quickbook Connector\bin\Debug\Persits.PDF.dll
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots Quickbook Connector\bin\Debug\SevenZipSharp.dll
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots Quickbook Connector\bin\Debug\SpeedySpots.API.dll
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots Quickbook Connector\bin\Debug\SpeedySpots.DataAccess.dll
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots Quickbook Connector\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots Quickbook Connector\bin\Debug\SpeedySpots.API.pdb
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots Quickbook Connector\bin\Debug\SpeedySpots.DataAccess.pdb
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots Quickbook Connector\bin\Debug\InetSolution.Web.pdb
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots Quickbook Connector\bin\Debug\log4net.xml
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots Quickbook Connector\bin\Debug\nsoftware.InQB.xml
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots Quickbook Connector\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots Quickbook Connector\obj\x86\Debug\SpeedySpots Quickbook Connector.csprojResolveAssemblyReference.cache
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots Quickbook Connector\obj\x86\Debug\SpeedySpots_Quickbook_Connector.CompanyConfirm.resources
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots Quickbook Connector\obj\x86\Debug\SpeedySpots_Quickbook_Connector.EmailTemplateEdit.resources
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots Quickbook Connector\obj\x86\Debug\SpeedySpots_Quickbook_Connector.Main.resources
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots Quickbook Connector\obj\x86\Debug\SpeedySpots_Quickbook_Connector.Properties.Resources.resources
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots Quickbook Connector\obj\x86\Debug\SpeedySpots_Quickbook_Connector.SyncInvoices.resources
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots Quickbook Connector\obj\x86\Debug\SpeedySpots Quickbook Connector.csproj.GenerateResource.Cache
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots Quickbook Connector\obj\x86\Debug\SpeedySpots Quickbook Connector.exe.licenses
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots Quickbook Connector\obj\x86\Debug\SpeedySpots Quickbook Connector.exe.manifest
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots Quickbook Connector\obj\x86\Debug\SpeedySpots Quickbook Connector.application
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots Quickbook Connector\obj\x86\Debug\SpeedySpots Quickbook Connector.exe
+C:\Users\Linda Sheely\Desktop\David - Dev\iNet\dev-david\SpeedySpots Quickbook Connector\obj\x86\Debug\SpeedySpots Quickbook Connector.pdb

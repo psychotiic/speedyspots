@@ -1,0 +1,344 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="SpeedySpots.Site" %>
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+<head runat="server">
+    <title>Speedy Spots</title>
+    <link rel="stylesheet" type="text/css" media="screen, projection" href="css/screen.css" />
+    <!--[if IE 7]>
+    <link rel="stylesheet" type="text/css" media="screen, projection" href="css/ie7-hacks.css" />
+    <![endif]-->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script type="text/javascript">
+function popUp(URL) {
+day = new Date();
+id = day.getTime();
+eval("page" + id + " = window.open(URL, '" + id + "', 'location=0,menubar=0,status=0,scrollbars,resizable,width=800,height=600,top=0,left=0');");
+}
+    </script>
+    <telerik:RadCodeBlock ID="m_oCodeBlock" runat="server">
+    <script type="text/javascript">
+        var bolFeedbackOpen = false;
+
+        $(function () {
+            $('#fblink a').click(function () {
+                if (bolFeedbackOpen == false) {
+                    $('#feedback').animate({ top: '0' }, { queue: false, duration: 500 });
+                    bolFeedbackOpen = true;
+                } else {
+                    $('#feedback').animate({ top: '-523px' }, { queue: false, duration: 500 });
+                    bolFeedbackOpen = false;
+                }
+            });
+            $('#close').click(function () {
+                $('#feedback').animate({ top: '-523px' }, { queue: false, duration: 500 });
+                bolFeedbackOpen = false;
+            });
+        });
+    </script>
+    <script type="text/javascript"><!--        //--><![CDATA[//><!--
+
+        sfHover = function () {
+            var sfEls = document.getElementById("nav").getElementsByTagName("LI");
+            for (var i = 0; i < sfEls.length; i++) {
+                sfEls[i].onmouseover = function () {
+                    this.className += " sfhover";
+                }
+                sfEls[i].onmouseout = function () {
+                    this.className = this.className.replace(new RegExp(" sfhover\\b"), "");
+                }
+            }
+        }
+        if (window.attachEvent) window.attachEvent("onload", sfHover);
+
+        //--><!]]></script>
+    </telerik:RadCodeBlock>
+    <asp:ContentPlaceHolder ID="m_oHead" runat="server">
+    </asp:ContentPlaceHolder>
+    
+</head>
+<body id="m_oBodyTag" runat="server">
+    <div id="wrapper">
+        <div id="header">
+            <div id="top">
+<% if(MemberProtect.CurrentUser.IsAuthorized) %>
+<% { %>     
+                <div id="welcomebox" class="group noprint">
+                    <ul>
+                        <li id="logout"><a href="<%=ResolveUrl("~/logoff.aspx") %>">Logoff</a></li><li id="dash">
+                            <% if(ApplicationContext.IsCustomer) %>
+                            <% { %>
+                                <a href="<%=ResolveUrl("~/user-dashboard.aspx") %>">Dashboard</a>
+                            <% } %>
+                            <% else if(ApplicationContext.IsStaff || ApplicationContext.IsAdmin) %>
+                            <% { %>
+                                <a href="<%=ResolveUrl("~/staff-dashboard.aspx") %>">Dashboard</a>
+                            <% } %>
+                            <% else if(ApplicationContext.IsTalent) %>
+                            <% { %>
+                                <a href="<%=ResolveUrl("~/talent-dashboard.aspx") %>">Dashboard</a>
+                            <% } %>
+                        </li><li id="fblink"><a href="#">Feedback?</a></li>
+                    </ul>
+                </div>
+<% } %>
+                <h1 id="logo"><a href="/pages/default.aspx">Speedy Spots&reg;</a></h1>
+                <img src="~/img/ss-logo-print.gif" height="65" width="307" alt="Speedy Spots" class="print" runat="server" />
+                <div id="divWhosOnBlock" runat="server">
+                    <script type="text/javascript" src="//whosongw.inetsolution.com/include.js?domain=www.speedyspots.com"></script>
+                    <script type="text/javascript" >
+                        <%=this.WhosOnInTrackOnlyOutput %>
+                        if (typeof sWOTrackPage == 'function') sWOTrackPage();
+                    </script>
+                    <script type="text/javascript" src="<%=ResolveClientUrl("~/js/formfill.js")%>"></script>
+                </div>
+            </div>
+        </div>
+
+        <div id="nav" class="group noprint">
+		    <ul class="group">
+			    <li><a href="default.aspx" runat="server">Home</a></li>
+			    <li><a href="/pages/talentShowcase.aspx">Voice Talent</a>
+                <ul>
+                    <li><a href="/pages/talentShowcase.aspx?id=2">Female</a></li>
+                    <li><a href="/pages/talentShowcase.aspx?id=1">Male</a></li>
+                    <li><a href="/pages/talentShowcase.aspx?id=3">Child</a></li>
+                    <li><a href="/pages/talentShowcase.aspx?id=15">Hispanic Male</a></li>
+                    <li><a href="/pages/talentShowcase.aspx?id=16">Hispanic Female</a></li>
+                    <li><a href="/pages/talentShowcase.aspx?id=5">Urban</a></li>
+                    <li><a href="/pages/talentShowcase.aspx?id=6">Character / Accent</a></li>
+                    <li><a href="/pages/talentShowcase.aspx?id=7">Hard Sell</a></li>
+                    <li><a href="/pages/talentShowcase.aspx?id=8">Production Samples</a></li>
+                    <li><a href="/pages/talentShowcase.aspx?id=9">Multi-voice</a></li>
+                    <li><a href="/pages/talentShowcase.aspx?id=21">Narration</a></li>
+                </ul>
+                </li>
+                <li><a href="http://blog.speedyspots.com">Our Blog</a></li>
+                <li><a href="/pages/about_us.aspx">About Us</a>
+                    <ul>
+                        <li><a href="/pages/learn_more.aspx">Learn More</a></li>
+                        <li><a href="/pages/mission_statement.aspx">Mission Statement</a></li>
+                        <li><a href="/pages/faq_help.aspx">FAQs / Help</a></li>
+                        <li><a href="/pages/links.aspx">Useful Links</a></li>
+                    </ul>
+                </li>
+			    <li><a href="/pages/contact_us.aspx">Contact Us</a></li>
+			    <li><a href="<%=RatesUrl %>">Rates</a></li>
+                <li><a href="<%=ResolveUrl("~/payments/default.aspx") %>">Invoice Payment</a></li>
+		    </ul>
+	    </div>
+        
+        <div id="ss_message">
+            <% if(NewMessage != null) %>
+            <% { %>
+            <p><strong>New Message:</strong> <a href="<%=ResolveUrl("~/messages-view.aspx") %>?id=<%=NewMessage.IAMessageID %>"><%=NewMessage.Subject %></a> [<a href="#" id="ss_hide" class="hide">hide</a>]</p>
+            <% } %>
+        </div>
+
+        <div id="body" class="group">
+        <form id="m_oForm" runat="server"> 
+        <div id="feedback">
+            <div id="divFeedbackform" runat="server" class="feedbackform">
+                <asp:ValidationSummary ID="m_oValidationFeedback" runat="server" ValidationGroup="Feedback" DisplayMode="BulletList" HeaderText="Please fix the following issues to continue:" CssClass="message negative" />
+                <div class="form-holder group">
+                    <fieldset>
+                        <legend>Provide Feedback:</legend>
+                        <p>We love your Feedback regarding the web site.  If you experience any issue with a production please call or e-mail us.</p>
+                        <div class="group">
+                            <label>
+                            <asp:RequiredFieldValidator ID="m_reqType" runat="server" ValidationGroup="Feedback" ControlToValidate="m_radFeedbackType" ErrorMessage="Please select the type of feedback.">*</asp:RequiredFieldValidator>
+                            Type:
+                            </label>
+                            <div class="inputgroup">
+                                <asp:RadioButtonList ID="m_radFeedbackType" runat="server" RepeatDirection="Horizontal" repeatlayout="Flow">
+                                    <asp:ListItem Text="Praise" Value="Praise" />
+                                    <asp:ListItem Text="Question" Value="Question" />
+                                    <asp:ListItem Text="Problem" Value="Problem" />
+                                </asp:RadioButtonList>
+                            </div>
+                        </div>
+                        <div class="group">
+                            <label>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="Feedback" ControlToValidate="m_txtFeedbackMessage" ErrorMessage="Please enter your feedback message.">*</asp:RequiredFieldValidator>
+                            Message:
+                            </label>
+                            <div class="inputgroup">
+                                <telerik:RadTextBox runat="server" ID="m_txtFeedbackMessage" TextMode="MultiLine" Columns="41" Rows="5" />
+                            </div>
+                        </div>
+                        <div class="group">
+                            <label>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="Feedback" ControlToValidate="m_radFeedbackFeeling" ErrorMessage="Please select how your feeling.">*</asp:RequiredFieldValidator>
+                            Feeling:
+                            </label>
+                            <div class="inputgroup">
+                                <asp:RadioButtonList ID="m_radFeedbackFeeling" runat="server" RepeatDirection="Horizontal" repeatlayout="Flow">
+                                    <asp:ListItem Text="Happy" Value="Happy" />
+                                    <asp:ListItem Text="Indifferent" Value="Indifferent" />
+                                    <asp:ListItem Text="Sad" Value="Sad" />
+                                </asp:RadioButtonList>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="button-row action">
+                    <asp:LinkButton ID="m_btnSendFeedback" runat="server" ValidationGroup="Feedback" Text="Send Feedback" CssClass="button primaryAction" OnClientClick="return OnSendFeedback();" />
+                    <a href="#" class="button" id="close">Close</a>
+                </div>
+            </div>
+        </div>
+            <telerik:RadAjaxLoadingPanel ID="m_pnlLoading" runat="server" Transparency="20" BackColor="#E0E0E0">
+                <table style="width:100%;height:100%;">
+                    <tr style="height:100%">
+                        <td align="center" valign="middle" style="width:100%">
+                            <img src='<%=ResolveUrl("~/img/loading3.gif") %>' alt="Loading..." />
+                        </td>
+                    </tr>
+                </table>
+            </telerik:RadAjaxLoadingPanel>
+            <telerik:RadScriptManager ID="m_oScriptManager" runat="server"></telerik:RadScriptManager>
+            <div id="m_divMessage" runat="server"></div>
+            <asp:ValidationSummary ID="m_oValidationSummary" runat="server" DisplayMode="BulletList" HeaderText="Please fix the following issues to continue:" CssClass="message negative" />
+            <telerik:RadAjaxManager ID="m_oAjaxManager" runat="server" OnAjaxRequest="AjaxRequest" EnablePageHeadUpdate="false">
+            </telerik:RadAjaxManager>
+            <asp:ContentPlaceHolder ID="m_oContent" runat="server">
+        
+            </asp:ContentPlaceHolder>
+            <div id="m_divMenu" runat="server"></div>
+        </form>
+        </div>
+        <div id="footer" class="group noprint">
+            <div id="copyright">
+                <p>Copyright &copy; 1998-<%=DateTime.Today.Year %> Speedy Spots, Inc.&reg; All Rights Reserved. | <a href="http://www.speedyspots.com/pages/sitemap.aspx">Site Map</a> | <a href="http://www.speedyspots.com/pages/contact_us.aspx">Contact Us</a> | <a href="payments/termsandconditions.aspx">Terms and Conditions</a> 
+        <% if(ApplicationContext.IsStaff) %>
+        <% { %>
+        | <a href="javascript:popUp('report-unavailability.aspx')">Unavailability Report</a>
+        <% } %> <asp:Literal ID="litVersionNumber" runat="server" />
+        </p>
+                <p id="phone">Call us at 1-800-697-8819</p>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript">
+    <%if(MemberProtect.CurrentUser.IsAuthorized) { %>
+    var iTimeout = 90000;
+    var iMessageID = 0;
+    var userIsAuthorized = true;
+    var messageShowing = false;
+    var _ssMessage = '';
+
+    <% if(NewMessage != null) { %>iMessageID = <%=NewMessage.IAMessageID %>; <% } %>
+
+    $(document).ready(function () {
+        _ssMessage = $('#ss_message');
+
+        if(iMessageID > 0) {
+            WireUpHideMessageDisplay();
+            messageShowing = true;
+        }
+
+        if(!messageShowing) {
+            // Start timer to check for new message
+            setTimeout(CheckNewMessage, iTimeout);
+        }
+    });
+
+    function CheckNewMessage() {
+        if(userIsAuthorized && !messageShowing) {
+            $.getJSON("<%=ResolveUrl("~/ajax-new-message.aspx") %>", function(json) {
+                if(json.id != undefined) {
+                    if(iMessageID != json.id) {
+                        iMessageID = json.id;
+
+                        _ssMessage.html(json.html);
+                        _ssMessage.hide();
+                        _ssMessage.slideDown("slow");
+
+                        WireUpHideMessageDisplay();
+
+                        messageShowing = true;
+                    }
+                }
+
+                if(!messageShowing && json.Error == undefined) {
+                    // Start new timer to repeat process again
+                    setTimeout(CheckNewMessage, iTimeout);
+                } else if (json.Error == 'Unathenticated') {
+                    userIsAuthorized = false;
+                }
+            });
+        }
+    }
+
+    function WireUpHideMessageDisplay() {
+        _ssMessage.find("#ss_hide").click(function () {
+            _ssMessage.slideUp("slow");
+            messageShowing = false;
+
+            setTimeout(CheckNewMessage, iTimeout);
+        });
+    }
+    <% } %>
+
+    <%if(divFeedbackform.Visible) { %>
+    function OnSendFeedback() {
+        Page_ClientValidate("Feedback");
+
+        if(Page_IsValid) {
+            var radFeedbackType = $("#<%=m_radFeedbackType.ClientID %> input:checked");
+            var txtFeedbackMessage = $("#<%=m_txtFeedbackMessage.ClientID %>");
+            var radFeedbackFeeling = $("#<%=m_radFeedbackFeeling.ClientID %> input:checked");
+
+            var sendFeedbackButton = $('#<%=m_btnSendFeedback.ClientID %>');
+            sendFeedbackButton.attr('disabled', 'disabled');
+            sendFeedbackButton.html('Sending....');
+            sendFeedbackButton.removeClass('primaryAction');
+
+            $.ajax({
+                url: "<%=ResolveUrl("~/ajax-send-feedback.aspx") %>",
+                data: ({type: radFeedbackType.val(), message: txtFeedbackMessage.val(), feeling: radFeedbackFeeling.val(), url: location.href}),
+                type: "POST",
+                success: OnSendFeedbackSuccess,
+                error: OnSendFeedbackError
+            });
+        }
+
+        return false;
+    }
+
+    function OnSendFeedbackSuccess(data, textStatus, jqXHR)
+    {
+        var radFeedbackType = $("#<%=m_radFeedbackType.ClientID %> input:checked");
+        var txtFeedbackMessage = $("#<%=m_txtFeedbackMessage.ClientID %>");
+        var txtFeedbackMessageValue = $("#<%=m_txtFeedbackMessage.ClientID %>");
+        var radFeedbackFeeling = $("#<%=m_radFeedbackFeeling.ClientID %> input:checked");
+
+        txtFeedbackMessage.val("");
+        txtFeedbackMessageValue.val("");
+        radFeedbackType.removeAttr('checked');
+        radFeedbackFeeling.removeAttr('checked');
+
+        var sendFeedbackButton = $('#<%=m_btnSendFeedback.ClientID %>');
+        sendFeedbackButton.removeAttr('disabled', 'disabled');
+        sendFeedbackButton.html('Send Feedback');
+        sendFeedbackButton.addClass('primaryAction');
+        
+        $('#close').toggle();
+        $('#feedback').animate({ top: '-523px' }, { queue: false, duration: 500 });
+        bolFeedbackOpen = false;
+    }
+
+    function OnSendFeedbackError(jqXHR, textStatus, errorThrown)
+    {
+        alert(textStatus + ": " + jqXHR.responseText);
+
+        var sendFeedbackButton = $('#<%=m_btnSendFeedback.ClientID %>');
+        sendFeedbackButton.removeAttr('disabled', 'disabled');
+        sendFeedbackButton.html('Send Feedback');
+        sendFeedbackButton.addClass('primaryAction');
+    }
+    <% } %>
+</script>
+</body>
+</html>

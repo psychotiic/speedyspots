@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ajax-user-lookup.aspx.cs" Inherits="SpeedySpots.ajax_user_lookup" %>

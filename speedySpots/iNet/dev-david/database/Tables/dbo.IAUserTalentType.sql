@@ -1,0 +1,13 @@
+CREATE TABLE [dbo].[IAUserTalentType]
+(
+[IAUserTalentTypeID] [int] NOT NULL IDENTITY(1, 1),
+[MPUserID] [uniqueidentifier] NOT NULL CONSTRAINT [DF_IAUserTalentType_MPUserID] DEFAULT ('00000000-0000-0000-0000-000000000000'),
+[IATalentTypeID] [int] NOT NULL CONSTRAINT [DF_IAUserTalentType_IATalentTypeID] DEFAULT ((0))
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[IAUserTalentType] ADD CONSTRAINT [PK_IAUserTalentType] PRIMARY KEY CLUSTERED  ([IAUserTalentTypeID]) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[IAUserTalentType] ADD CONSTRAINT [FK_IAUserTalentType_IATalentType] FOREIGN KEY ([IATalentTypeID]) REFERENCES [dbo].[IATalentType] ([IATalentTypeID]) ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[IAUserTalentType] ADD CONSTRAINT [FK_IAUserTalentType_MPUser] FOREIGN KEY ([MPUserID]) REFERENCES [dbo].[MPUser] ([MPUserID]) ON DELETE CASCADE
+GO

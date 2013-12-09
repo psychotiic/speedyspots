@@ -1,0 +1,112 @@
+/* fix input font styling */
+
+fieldset input, fieldset textarea, fieldset select {
+	font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Helvetica, Arial, sans-serif;
+	font-size: 1em;
+}
+
+fieldset {
+	line-height: 1.83em;
+	/* 22px / 12px = 1.83em - the height text areas in Firefox */
+}
+
+fieldset legend {
+	/* margin-bottom: 1em; Safari/Chrome ignores this */
+	padding-bottom: 1em;
+	font-size: 1.25em;
+	/* 20px / 16px = 1.25em */
+}
+
+fieldset label {
+	float: left;
+	text-align: right;
+	width: 24%;
+	margin-right: 1%;
+}
+
+fieldset p.note {
+	margin-left: 25%;
+	font-style: italic;
+}
+
+fieldset .group {
+	margin-bottom: 1em;
+	font-size: .75em;
+	/* 12px / 16px = .75em */
+}
+
+fieldset .inputgroup {
+	float: left;
+	width: 75%;
+}
+
+fieldset .inputgroup label {
+	float: none;
+	margin-right: 0;
+	width: auto;
+}
+
+.buttonrow {
+	margin-left: 25%;
+}
+
+/* Picker Box */
+
+.available, .controls, .assigned {
+float: left;
+width: 25%;
+}
+
+.available label, .assigned label {
+float: none;
+width: auto;
+text-align: left;
+display: block;
+}
+
+.controls {
+padding-top: 1.45em; /* bring controls down to be in line w/ lists */
+text-align: center;
+}
+
+.controls input {
+margin-top: 1em;
+}
+
+/* Special Styles */
+
+fieldset label.required {
+	font-weight: bold;
+}
+
+.primaryAction {
+	font-weight: bold;
+}
+
+.negativeAction 
+{
+	font-weight: bold;
+	color: Red;
+}
+
+/* clearfix */
+
+.group:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+/* note */
+
+.inlinenote {
+float: right;
+width: 25%;
+background: #ffc;
+border: 1px solid #fc0;
+padding: 1%;
+line-height: 1em;
+margin-right: 5%;
+}

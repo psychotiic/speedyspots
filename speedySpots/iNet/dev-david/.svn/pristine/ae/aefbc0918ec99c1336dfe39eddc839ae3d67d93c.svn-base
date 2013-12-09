@@ -1,0 +1,10 @@
+﻿[class^="icon-"],
+[class*=" icon-"] {
+    margin-right: 0;
+    padding-right: 5px;
+}
+
+.riSingle
+{
+    display: inline;
+}

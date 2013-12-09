@@ -1,0 +1,8 @@
+CREATE TABLE [dbo].[IAJobFileType]
+(
+[IAJobFileTypeID] [int] NOT NULL,
+[Name] [nvarchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL CONSTRAINT [DF_IAJobFileType_Name] DEFAULT ('')
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[IAJobFileType] ADD CONSTRAINT [PK_IAJobFileType] PRIMARY KEY CLUSTERED  ([IAJobFileTypeID]) ON [PRIMARY]
+GO

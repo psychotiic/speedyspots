@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets"/>
+  <Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets"/>
+	
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProjectName>SpeedySpots.Services</ProjectName>
+    <ProjectFile>$(ProjectName)\$(ProjectName).csproj</ProjectFile>
+	<WebProjectOutput>WebBuild</WebProjectOutput>
+	<PublishDirectory>e:\Projects\SpeedySpots\Development\Published\Service\$(Configuration)</PublishDirectory>
+	<WebDeploymentDirectory>E:\Domains\ss.inetsolution.com\WebService</WebDeploymentDirectory>
+	<Version>$(BUILD_NUMBER)</Version>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <ReleaseIncludes Include="Published\Service\Debug\**\*.*" />
+    <ReleaseIncludes Include="Change Scripts\**\*.*" />
+  </ItemGroup>
+  <ItemGroup>
+    <ZipFiles Include="@(ReleaseIncludes)" />
+  </ItemGroup>
+
+  <Target Name="Build" DependsOnTargets="BuildAndPublish;Deploy" />
+  <Target Name="Release" DependsOnTargets="BuildAndPublish;Zip" />
+  
+  <Target Name="BuildAndPublish">
+	<AssemblyInfo CodeLanguage="CS"  
+		OutputFile="$(MSBuildProjectDirectory)\$(ProjectName)\Properties\AssemblyInfo.cs" 
+		AssemblyTitle="SpeedySpots.SSMS.SVC" 
+		AssemblyDescription="SpeedySpots SSMS Services"
+		AssemblyConfiguration=""
+		AssemblyCompany="SpeedySpots"
+		AssemblyProduct="SSMS"
+		AssemblyCopyright="Copyright (c) SpeedySpots, 2011"
+		AssemblyTrademark=""
+		ComVisible="false"
+		CLSCompliant="true"
+		AssemblyVersion="$(Version)"
+		AssemblyFileVersion="$(Version)" />
+    <RemoveDir Directories="$(PublishDirectory)" ContinueOnError="true" />
+    <MSBuild Projects="$(ProjectFile)"
+             Targets="Build;PipelinePreDeployCopyAllFilesToOneFolder"
+             Properties="Configuration=$(Configuration);_PackageTempDir=$(PublishDirectory);AutoParameterizationWebConfigConnectionStrings=false;" />
+  </Target>
+  
+  <Target Name="Deploy">
+    <RemoveDir Directories="$(WebDeploymentDirectory)"
+               ContinueOnError="true" />
+    <ItemGroup>
+      <DeploymentFiles Include="$(PublishDirectory)\**\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(DeploymentFiles)"
+          DestinationFolder="$(WebDeploymentDirectory)\%(RecursiveDir)" />
+  </Target>
+  
+  <Target Name="Zip" DependsOnTargets="BuildAndPublish">
+	<MakeDir Directories="Service" />
+	<Copy SourceFiles="@(PublishedFiles)" DestinationFiles="@(PublishedFiles->'Service\%(RecursiveDir)%(Filename)%(Extension)')" />
+	
+	<ItemGroup>
+	  <ReleaseIncludes Include="Service\**\*.*" />
+	  <ReleaseIncludes Include="Change Scripts\**\*.*" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ZipFiles Include="@(ReleaseIncludes)" />
+	</ItemGroup>
+	
+    <Zip Files="@(ZipFiles)" ZipFileName="Releases\SSMS-SVC-v$(Version).zip" />
+	<RemoveDir Directories="App" />
+  </Target>
+
+</Project>

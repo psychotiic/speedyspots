@@ -1,0 +1,54 @@
+﻿/*
+*:first-child+html .form-holder fieldset .group {
+    height: 36px;
+}
+
+*:first-child+html .form-holder fieldset .hasnotes {
+	height: 72px;
+}
+
+
+*:first-child+html .form-holder fieldset .sidebaroneoff 
+{
+	height: 100px;
+}
+*/
+
+*:first-child+html .group {
+	min-height: 1px;
+}
+
+*:first-child+html #dashboard-tabs li 
+{
+	float: left;
+	width: 20%;
+}
+
+*:first-child+html #dashboard-tabs li a
+{
+	padding: 0 4%;
+	width: 92%;
+}
+
+/*
+
+*:first-child+html .button-row a.button:hover {
+	background-color: #757575;
+}
+
+*:first-child+html .button-row a.primaryAction {
+	background-color: #cce0cc;
+}
+
+*:first-child+html .button-row a.primaryAction:hover {
+	background-color: #338533;
+}
+
+*:first-child+html .button-row a.negativeAction:hover {
+	background-color: #d63333;
+} */
+
+*:first-child+html div.RadGrid_test table table 
+{
+	width: 100%;
+}

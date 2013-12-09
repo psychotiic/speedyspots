@@ -1,0 +1,198 @@
+<html>
+<head>
+<title></title>
+<style type="text/css">
+/* reset */
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	border: 0;
+	outline: 0;
+	background: transparent;
+	}
+	
+ol, ul {
+	list-style: none;
+	}
+
+blockquote, q {
+	quotes: none;
+	}
+
+:focus {
+	outline: 0;
+	}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	}
+
+/* end reset */
+
+body {
+	font-family: helvetica, arial, sans-serif;
+	font-size: 62.5%;
+}
+
+h1 {
+	font-size: 2.571428em;
+	margin-bottom: .5em;
+}
+
+h2 {
+	font-size: 1.571428em;
+}
+
+h3 {
+	font-size: 1.285714em;
+}
+
+.full {
+	width: 100%;
+}
+
+.left {
+	text-align: left;
+}
+
+.center {
+	text-align: center;
+}
+
+.right {
+	text-align: right;
+}
+
+table.hasborder td.bottom {
+	vertical-align: bottom;
+}
+
+table {
+	font-size: 1.4em;
+	line-height: 1.25em;
+}
+
+table table {
+	font-size: 1em;
+}
+
+table.hasborder {
+	border-top: 1px solid #000;
+	border-left: 1px solid #000;
+}
+
+table.hasborder th,
+table.hasborder td {
+	padding: 5px;
+	border-right: 1px solid #000;
+	border-bottom: 1px solid #000;
+	vertical-align: top;
+}
+
+table.nobottom td {
+	border-bottom: 0;
+}
+
+table.bigwidth {
+	width: 50%;
+}
+</style>
+</head>
+<body>
+<!-- table to hold the header -->
+<table class="full">
+	<tr>
+		<td>
+			<!-- address -->
+			<h3>Speedy Spots, Inc.</h3>
+			<p>12175 Jerusalem Road<br />
+				Chelsea, Michigan 48118-9683<br />
+				Phone: 734-475-9327</p>
+		</td>
+		<td align="right">
+			<!-- date/invoice -->
+			<h1>Invoice</h1>
+			<table class="hasborder">
+				<thead>
+					<tr>
+						<th>Date</th>
+						<th>Invoice #</th>
+					</tr>
+				</thead>
+				<tr>
+					<td>[InvoiceDate]</td>
+					<td class="center">[InvoiceNumber]</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<!-- bill to address -->
+<table class="hasborder bigwidth">
+	<thead>
+		<tr>
+			<th class="left">Bill To</th>
+		</tr>
+	</thead>
+	<tr>
+		<td>	
+			<p>[InvoiceBillTo]</p>
+		</td>
+	</tr>
+</table>
+
+<!-- table to hold the mashed together tables at the bottom -->
+<table class="full">
+	<tr>
+		<td align="right">
+			<!-- terms/due -->
+			<table class="hasborder nobottom">
+				<thead>
+					<tr>
+						<th>Terms</th>
+						<th>Due Date</th>
+					</tr>
+				</thead>
+				<tr>
+					<td>[InvoiceTerms]</td>
+					<td>[InvoiceDueDate]</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<!-- actual invoice -->
+<table class="full hasborder">
+	<thead>
+		<tr>
+			<th>P.O. Date</th>
+			<th>Description</th>
+			<th>Amount</th>
+		</tr>
+	</thead>
+    [InvoiceLineItems]
+	<!-- here's the footer -->
+	<tfoot>
+		<tr>
+			<td>[CustomerMessage]</td>
+			<td class="right"><h3>Invoice Total</h3></td>
+			<td class="right bottom">[InvoiceTotal]</td>
+		</tr>
+        <tr>
+			<td colspan="2" class="right"><h2>Less Credit/Payment</h2></td>
+			<td class="right bottom">[InvoiceCredit]</td>
+		</tr>
+		<tr>
+			<td colspan="2" class="right"><h2>Invoice Balance Due</h2></td>
+			<td class="right bottom">[InvoiceBalanceDue]</td>
+		</tr>
+	</tfoot>
+</table>
+</body>
+</html>

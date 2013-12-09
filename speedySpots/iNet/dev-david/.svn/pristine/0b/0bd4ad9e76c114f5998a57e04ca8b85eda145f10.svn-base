@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Site Down for Scheduled Maintenance</title>
+    <style type="text/css">body{background:#e0e0e0;font-family:"helvetica neue",helvetica,Arial,Sans-Serif;line-height:1.5em}#message{background:#fff;width:550px;margin:100px auto;box-shadow:0 1px 5px rgba(0,0,0,.25)}#header{float:left;background:red url("img/bg-right.png") 260px 0 no-repeat;width:100%}#header img{float:left}#message h1{font-size:22px;color:#fff;text-align:right;margin:0;margin-right:20px;line-height:79px}#message p{font-size:16px}#body{clear:left;padding:20px 50px 30px}</style>
+</head>
+<body>
+    <div id="message">
+        <div id="header">
+            <img src="img/logo-sm.png" />
+            <h1>Scheduled Maintenance</h1>
+        </div>
+        <div id="body">
+            <p>Our site is currently down for scheduled maintenance. We anticipate being back online shortly. Please check back soon.</p>
+            <p>Thank you for your patience,<br />The Speedy Spots Team</p>
+        </div>
+    </div>
+</body>
+</html>

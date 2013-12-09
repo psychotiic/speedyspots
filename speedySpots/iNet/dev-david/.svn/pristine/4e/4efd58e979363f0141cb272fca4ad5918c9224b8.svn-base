@@ -1,0 +1,376 @@
+﻿<%@ Page Title="Speedy Spots :: Request Details" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="order-details.aspx.cs" Inherits="SpeedySpots.order_details" %>
+<%@ Import Namespace="SpeedySpots.Business" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="m_oHead" runat="server"></asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="m_oContent" runat="server">
+<div class="main">
+    <p class="breadcrumb"><asp:HyperLink ID="hlDashboardBreadcrumb" runat="server" Text="Dashboard" /> &raquo; <strong>Request Details</strong></p>
+    <h2>Request #<%=IARequest.RequestIdForDisplay %></h2>
+
+    <%=DisplayProgressBar() %>
+
+    <%=DisplaySpecialNotes() %>
+
+    <p class="highlight">
+        <% if(IARequest.IARequestStatusID == ApplicationContext.GetRequestStatusID(RequestStatus.Canceled)) %>
+        <% { %>
+            <strong>This request has been canceled.</strong>
+        <% } %>
+        <% else %>
+        <% { %>
+            <strong>Expected time of delivery:</strong> <%=ExpectedDelivery%>
+        <% } %>
+    </p>
+
+<% if(IARequest.IARequestStatusID == ApplicationContext.GetRequestStatusID(RequestStatus.NeedsEstimate)) %>
+<% { %>
+    <div class="message">
+        <p>We will be sending you an estimate to approve before beginning production.</p>
+    </div>
+<% } else if (IARequest.IACustomerCreditCardID > 0)
+   { %>
+   <div id="paymentPreAuthorized" runat="server" class="message">
+      <p>You have pre-authorized payment of this request, a receipt will be sent when the card has been charged.</p>
+   </div>
+   <% } %>
+
+    <h2>Files Received:</h2>
+    
+<% if(IARequest.IARequestProductions.Count == 0) %>
+<% { %>
+    <p>Available to download once your request is complete.</p>
+<% } %>
+
+    <asp:Repeater ID="m_oRepeaterProduction" runat="server">
+        <ItemTemplate>
+            <div class="form-holder">
+                <fieldset>
+                    <legend><%#string.Format("{0:ddd, MMMM dd, yyyy a\\t h:mm tt}", DataBinder.Eval(Container.DataItem, "CreatedDateTime")) %></legend>
+                    <div class="group">
+                        <label>File(s):</label>
+                        <div class="inputgroup">
+                            <span class="output">
+                        <asp:Repeater ID="m_oRepeaterProductionFiles" runat="server">
+                            <ItemTemplate>
+                                <a href="download.aspx?id=<%#DataBinder.Eval(Container.DataItem, "IARequestProductionFileID") %>&type=requestproduction"><%#DataBinder.Eval(Container.DataItem, "Filename") %></a><br />
+                            </ItemTemplate>
+                        </asp:Repeater>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="group">
+                        <label>Notes:</label>
+                        <div class="inputgroup">
+                            <span class="output"><%#DataBinder.Eval(Container.DataItem, "Notes") %></span>
+                        </div>
+                    </div>
+
+                    <telerik:RadAjaxPanel ID="m_oAjaxPanel" runat="server" LoadingPanelID="m_pnlLoading">
+                        <div id="m_divRequestRecut" runat="server" class="button-row">
+                            <asp:LinkButton id="m_btnTriggerRecut" runat="server" Text="Request Recut" CssClass="button" OnClick="OnRequestRecut" />
+                        </div>
+
+                        <div id="m_divRecut" runat="server">
+                            <div class="group">
+                                <label>Recut Request:</label>
+                                <div class="inputgroup">
+                                    <telerik:RadTextBox ID="m_txtDescription" runat="server" MaxLength="500" Columns="50" Rows="5" TextMode="MultiLine"></telerik:RadTextBox>
+                                    <p class="note red"><strong>NOTE:</strong> By requesting a recut you are indicating the talent made an error and you would like it to be corrected.</p>
+                                </div>
+                            </div>
+
+                            <div class="button-row">
+                                <asp:LinkButton ID="m_btnRecut" runat="server" Text="Submit Request" CssClass="button primaryAction" CommandArgument='<%#DataBinder.Eval(Container.DataItem, "IARequestProductionID") %>' OnClick="OnRecut" />
+                                <asp:LinkButton ID="m_btnRecutCancel" runat="server" Text="Cancel" CssClass="button" CommandArgument='<%#DataBinder.Eval(Container.DataItem, "IARequestProductionID") %>' OnClick="OnRecutCancel"></asp:LinkButton>
+                            </div>
+                        </div>
+                    </telerik:RadAjaxPanel>
+
+                    <div id="m_divRecutReceipt" runat="server">
+                    </div>
+                </fieldset>
+            </div>
+        </ItemTemplate>
+    </asp:Repeater>
+    
+    <% if(IARequestEstimate != null || IARequest.IARequestStatusID == ApplicationContext.GetRequestStatusID(RequestStatus.WaitingEstimateApproval) || IARequest.IARequestStatusID == ApplicationContext.GetRequestStatusID(RequestStatus.NeedsEstimate)) %>
+    <% { %>
+    <h2 id="estimate">Estimate:</h2>
+    <div>
+        <% if(IARequestEstimate != null) %>
+        <% { %>
+            <% if(IARequestEstimate.IsPaymentRequired && IARequest.IARequestStatusID == ApplicationContext.GetRequestStatusID(RequestStatus.WaitingEstimateApproval)) %>
+            <% { %>
+                <p class="message">A payment is required before we begin production.</p>
+            <% } %>
+        <% } %>
+
+        <p><strong>Speedy Spots Estimate for Request <%=IARequest.RequestIdForDisplay %></strong></p>
+
+        <% if(IARequestEstimate != null) %>
+        <% { %>
+            <% if(IARequestEstimate.IAOrder != null) %>
+            <% { %>
+                <div class="form-holder">
+                    <fieldset>
+                        <legend>Estimate Payment Details:</legend>
+                        <div class="group">
+                            <label>Amount Paid:</label>
+                            <span class="output"><%=string.Format("{0:c}", IARequestEstimate.IAOrder.AuthorizeNetProcessCaptureAmount) %></span>
+                        </div>
+                        <div class="group">
+                            <label>Credit Card Number:</label>
+                            <span class="output"><%=string.Format("{0}", ApplicationContext.FormatSecureCreditCardNumber(MemberProtect.Cryptography.Decrypt(IARequestEstimate.IAOrder.CreditCardNumber))) %></span>
+                        </div>
+                        <div class="group">
+                            <label>Credit Card Type:</label>
+                            <span class="output"><%=string.Format("{0}", MemberProtect.Cryptography.Decrypt(IARequestEstimate.IAOrder.CreditCardType)) %></span>
+                        </div>
+                    </fieldset>
+                </div>
+            <% } %>
+        <% } %>
+
+        <% if(IARequestEstimate != null) %>
+        <% { %>
+            <div class="estimate">
+                <p><%=IARequestEstimate.EmailBody %></p>
+            </div>
+        <% } %>
+            
+        <div id="m_divPayment" runat="server">
+            <div class="form-holder">
+
+               <fieldset>
+                  <legend>Payment Information:</legend>
+                  <a name="paymentsource"></a>
+                  <div class="group">
+                     <label class="required">Payment Amount:</label>
+                     <span class="output"><%=string.Format("{0:c}", IARequestEstimate.Charge)%></span>
+                  </div>
+
+                  <div class="group">
+                    <asp:Label ID="Label2" runat="server" AssociatedControlID="PaymentSourceCombo">
+                       <asp:RequiredFieldValidator ID="PaymentSourceRequired" InitialValue="(please select)" ControlToValidate="PaymentSourceCombo" ErrorMessage="Please select a payment source." runat="server">*</asp:RequiredFieldValidator>
+                       <span class="required">Payment Source:</span>
+                    </asp:Label>
+                    <div class="note-holder">
+                        <telerik:RadComboBox ID="PaymentSourceCombo" CausesValidation="false" Width="250px" OnSelectedIndexChanged="PaymentSourceIndexChanged" AutoPostBack="true" LoadingMessage="Please wait" runat="server">
+                        </telerik:RadComboBox>
+                    </div>
+                  </div>
+
+                <asp:Panel ID="OnetimePaymentSourcePanel" runat="server" Visible="false">
+                <div class="group">
+                    <asp:Label ID="Label1" runat="server" AssociatedControlID="m_txtEmailReceipt">
+                       <asp:RequiredFieldValidator ID="EmailRequired" ControlToValidate="m_txtEmailReceipt" ErrorMessage="Please enter an email address." runat="server">*</asp:RequiredFieldValidator>
+                       <asp:RegularExpressionValidator ID="ReceiptEmailValidator" runat="server" ControlToValidate="m_txtEmailReceipt" ValidationExpression="^([a-zA-Z0-9]+[a-zA-Z0-9._%-]*@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,4},?[\s]*)*$" ErrorMessage="Please enter a valid email address, or comma separated list.">*</asp:RegularExpressionValidator>
+                        <span class="required">Email Receipt:</span>
+                    </asp:Label>
+                    <div class="note-holder">
+                        <telerik:RadTextBox ID="m_txtEmailReceipt" runat="server" columns="50" MaxLength="250"></telerik:RadTextBox>
+                        <p class="note">Comma seperated list of email addresses to receive payment notifications.</p>
+                    </div>
+                </div>
+                <div class="group">
+                    <asp:Label ID="Label8" runat="server" AssociatedControlID="m_cboCreditCardType">
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="m_cboCreditCardType" ErrorMessage="Please select your credit card type.">*</asp:RequiredFieldValidator>
+                        <span class="required">Credit Card Type:</span>
+                    </asp:Label>
+                    <telerik:RadComboBox ID="m_cboCreditCardType" runat="server" MaxHeight="200px">
+                        <CollapseAnimation Type="OutQuint" Duration="200"></CollapseAnimation>
+                    </telerik:RadComboBox>
+                </div>
+                <div class="group">
+                    <asp:Label ID="m_lblCCNumber" runat="server" AssociatedControlID="m_txtCreditCardNumber">
+                        <asp:RequiredFieldValidator ID="CardNumberRequired" ControlToValidate="m_txtCreditCardNumber" ErrorMessage="Please enter your credit card number." runat="server">*</asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator7" runat="server" ControlToValidate="m_txtCreditCardNumber" ValidationExpression="^(\d{15}|\d{16})$" ErrorMessage="Credit Card Number must be a valid credit card number.">*</asp:RegularExpressionValidator>
+                        <span class="required">Credit Card Number:</span>
+                    </asp:Label>
+                    <div class="note-holder">
+                        <telerik:RadTextBox ID="m_txtCreditCardNumber" runat="server" AutoCompleteType="Disabled" columns="16" MaxLength="16"></telerik:RadTextBox>
+                        <p class="note">No dashes or spaces.</p>
+                    </div>
+                </div>
+                <div class="group">
+                    <asp:Label ID="m_lblMonthExp" runat="server" AssociatedControlID="m_cboCreditCardExpireMonth">
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="m_cboCreditCardExpireMonth" ErrorMessage="Please select the credit card expiration month.">*</asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="m_cboCreditCardExpireYear" ErrorMessage="Please select the credit card expiration year.">*</asp:RequiredFieldValidator>
+                        <span class="required">Expiration:</span>
+                    </asp:Label>
+                    <div class="inputgroup">
+                        <telerik:RadComboBox ID="m_cboCreditCardExpireMonth" runat="server" Width="75">
+                        </telerik:RadComboBox>
+                        <telerik:RadComboBox ID="m_cboCreditCardExpireYear" runat="server" Width="75">
+                        </telerik:RadComboBox>
+                    </div>
+                </div>
+                <div class="group">
+                    <asp:Label ID="m_lblFirstName" runat="server" AssociatedControlID="m_txtCreditCardFirstName">
+                        <span>Name:</span>
+                    </asp:Label>
+                    <div class="inputgroup">
+                        <div class="note-holder">
+                            <telerik:RadTextBox ID="m_txtCreditCardFirstName" runat="server" MaxLength="20"></telerik:RadTextBox>
+                            <p class="note">First name</p>
+                        </div>
+                        <div class="note-holder">
+                            <telerik:RadTextBox ID="m_txtCreditCardLastName" runat="server" MaxLength="20"></telerik:RadTextBox>
+                            <p class="note">Last name</p>
+                        </div>
+                    </div>
+                </div>
+
+               <div class="group">
+                  <asp:Label ID="Label5" runat="server" AssociatedControlID="CompanyName">
+                     <span>Company name:</span>
+                  </asp:Label>
+            
+                  <div class="note-holder">
+                     <telerik:RadTextBox ID="CompanyName" runat="server" MaxLength="50">
+                     </telerik:RadTextBox>
+                  </div>
+               </div>
+
+                <div class="group">
+                    <asp:Label ID="m_lblSecurity" runat="server" AssociatedControlID="m_txtCreditCardSecurityCode">
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="m_txtCreditCardSecurityCode" ErrorMessage="Please enter the security code on the credit card.">*</asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="m_txtCreditCardSecurityCode" ValidationExpression="^(\d{3}|\d{4})$" ErrorMessage="Security code may be 3 or 4 digits.">*</asp:RegularExpressionValidator>
+                        <span class="required">CVC:</span>
+                    </asp:Label>
+                    <div class="inputgroup">
+                       <div class="note-holder">
+                          <telerik:RadTextBox ID="m_txtCreditCardSecurityCode" AutoCompleteType="Disabled" runat="server" columns="4" MaxLength="4"></telerik:RadTextBox>
+                          <p class="note">3 digit code found on the back of your card.  4 digits on front of card for American Express</p>
+                       </div>
+                    </div>
+                </div>
+                   
+               <div class="group">
+                <label>
+                    <span class="required">Terms &amp; Conditions:</span>
+                </label>
+                <div class="inputgroup nospace checkbox">
+                    <asp:CheckBox ID="m_chkAgree" runat="server" /> <label for="Master_m_oContent_m_chkAgree">I agree to the <a href="/payments/termsandconditions.aspx" target="_blank">Terms &amp; Conditions</a></label>
+                </div>
+               </div>
+
+               <div id="m_divSavePaymentInformation" runat="server" class="group">
+                  <label>&nbsp;</label>
+                  <div class="inputgroup">
+                     <asp:CheckBox ID="m_chkSavePaymentInformation" runat="server" Text="Store this credit card for future use" />
+                  </div>
+               </div>
+               </asp:Panel>
+
+                <asp:Panel ID="ExistingCardPaymentPanel" runat="server" Visible="false">
+                <div class="group">
+                    <asp:Label ID="Label3" runat="server" AssociatedControlID="EmailReceiptTextBox">
+                       <asp:RequiredFieldValidator ID="RequiredFieldValidator12" ControlToValidate="EmailReceiptTextBox" ErrorMessage="Please enter an email address." runat="server">*</asp:RequiredFieldValidator>
+                       <asp:RegularExpressionValidator ID="m_expContactEmail" runat="server" ControlToValidate="EmailReceiptTextBox"  ValidationExpression="^([a-zA-Z0-9]+[a-zA-Z0-9._%-]*@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,4},?[\s]*)*$" ErrorMessage="Please enter a valid email address, or comma separated list.">*</asp:RegularExpressionValidator>
+                        <span class="required">Email Receipt:</span>
+                    </asp:Label>
+                    <div class="note-holder">
+                        <telerik:RadTextBox ID="EmailReceiptTextBox" runat="server" columns="50" MaxLength="250"></telerik:RadTextBox>
+                        <p class="note">Comma seperated list of email addresses to receive payment notifications.</p>
+                    </div>
+                </div>
+                <div class="group">
+                    <asp:Label ID="Label4" runat="server" AssociatedControlID="CardTypeLabel">
+                        <span>Credit Card Type:</span>
+                    </asp:Label>
+                   <asp:Label ID="CardTypeLabel" runat="server"></asp:Label>
+                </div>
+                <div class="group">
+                     <asp:Label ID="LastFourLabel" AssociatedControlID="LastFourOfCardLabel" runat="server">Card ending in: </asp:Label>
+                     <asp:Label ID="LastFourOfCardLabel" runat="server"></asp:Label>
+                </div>
+                <div class="group">
+                    <asp:Label ID="Label6" runat="server" AssociatedControlID="m_cboCreditCardExpireMonth">
+                        <span>Expiration:</span>
+                    </asp:Label>
+                    <div class="inputgroup">
+                       <asp:Label runat="server" ID="MonthExpirationLabel"></asp:Label>/<asp:Label runat="server" ID="YearExpirationLabel"></asp:Label>
+                    </div>
+                </div>
+                <div class="group">
+                    <asp:Label ID="Label9" runat="server" AssociatedControlID="FirstNameLabel">
+                        <span>Name on card:</span>
+                    </asp:Label>
+                    <div class="inputgroup">
+                        <div class="note-holder">
+                           <asp:Label runat="server" ID="FirstNameLabel"></asp:Label>
+                        </div>
+                        <div class="note-holder">
+                           <asp:Label runat="server" ID="LastNameLabel"></asp:Label>
+                        </div>
+                    </div>
+                </div>
+
+                </asp:Panel>
+
+            </fieldset>
+            </div>
+        </div>
+
+        <div id="m_divLowerButtons" runat="server" class="button-row">
+            <inet:InetButton ID="m_btnPayment" runat="server" Text="Submit Payment" CssClass="button primaryAction" OnClick="OnPayment" />
+            <asp:LinkButton ID="m_btnApproveEstimate" runat="server" Text="Approve Estimate" CssClass="button primaryAction" OnClick="OnApproveEstimate" />
+            <asp:LinkButton ID="m_btnCancelRequest" runat="server" Text="Cancel Request" CssClass="button negativeAction" OnClientClick="return ConfirmUser('Are you sure you want to cancel this request? Doing so will permanently remove it from our system.');" OnClick="OnCancel" />
+        </div>
+    </div>
+    <% } %>
+
+    <% if(IARequest.IARequestStatusID == ApplicationContext.GetRequestStatusID(RequestStatus.NeedsEstimate)) %>
+    <% { %>
+    <p>Available once a producer has estimated your request.</p>
+    <% } %>
+    
+    <!-- We're explicitly hiding this section per Case 5745 for now, temporarily -->
+    <div id="m_divInvoices" runat="server" visible="false">
+        <h2>Invoice(s):</h2>
+        <div class="RadGrid_test">
+        <table class="rgMasterTable" style="width: 100%;">
+        <asp:Repeater ID="m_repeaterInvoices" runat="server" OnItemDataBound="OnInvoicesItemDataBound">
+            <HeaderTemplate>
+                <tr>
+                    <th class="rgHeader" scope="col" style="padding: 5px 7px 4px;">Invoice Number</th>
+                    <th class="rgHeader" scope="col" style="padding: 5px 7px 4px;">Job Title</th>
+                    <th class="rgHeader" scope="col" style="padding: 5px 7px 4px;">Payment Due Date</th>
+                    <th class="rgHeader" scope="col" style="padding: 5px 7px 4px;">Amount</th>
+                    <th class="rgHeader" scope="col" style="padding: 5px 7px 4px;"></th>
+                </tr>
+            </HeaderTemplate>
+            <AlternatingItemTemplate>
+                <tr class="rgAltRow">
+                    <td><a href='<%=ResolveUrl(ApplicationContext.InvoicePath) %><%# DataBinder.Eval(Container.DataItem, "Filename") %>'><%# DataBinder.Eval(Container.DataItem, "InvoiceNumber") %></a></td>
+                    <td><%# DataBinder.Eval(Container.DataItem, "Name") %></td>
+                    <td><%# DataBinder.Eval(Container.DataItem, "DueDateTime", "{0:M/dd/yyyy}") %></td>
+                    <td><%# DataBinder.Eval(Container.DataItem, "Amount", "{0:c}") %></td>
+                    <td><asp:hyperlink ID="hlPayNow" runat="server" Text="Pay Now" Visible="false" NavigateUrl="Payments/?i={0}" /></td>
+                </tr>
+            </AlternatingItemTemplate>
+
+            <ItemTemplate>
+                <tr class="rgRow">
+                    <td><a href='<%=ResolveUrl(ApplicationContext.InvoicePath) %><%# DataBinder.Eval(Container.DataItem, "Filename") %>'><%# DataBinder.Eval(Container.DataItem, "InvoiceNumber") %></a></td>
+                    <td><%# DataBinder.Eval(Container.DataItem, "Name") %></td>
+                    <td><%# DataBinder.Eval(Container.DataItem, "DueDateTime", "{0:M/dd/yyyy}") %></td>
+                    <td><%# DataBinder.Eval(Container.DataItem, "Amount", "{0:c}") %></td>
+                    <td><asp:hyperlink ID="hlPayNow" runat="server" Text="Pay Now" Visible="false" NavigateUrl="Payments/?i={0}" /></td>
+                </tr>
+            </ItemTemplate>
+        </asp:Repeater>
+        </table>
+        </div>
+    </div>
+</div>
+<div class="sidebar">
+    <div id="m_divButtons" runat="server" class="button-row action crambuttons">
+        <asp:LinkButton ID="m_btnCancel" runat="server" Text="Cancel Request" CssClass="button negativeAction" OnClientClick="return ConfirmUser('Are you sure you want to cancel this request? Doing so will permanently remove it from our system.');" OnClick="OnCancel" />
+    </div>
+    
+    <%=CancelText %>
+    
+    <speedyspots:SpeedySpotsTabs id="m_oTabs" runat="server" DefaultView="Producer" ShowRequestDetails="true" />
+</div>
+</asp:Content>

@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ajax-company-lookup.aspx.cs" Inherits="SpeedySpots.ajax_company_lookup" %>
